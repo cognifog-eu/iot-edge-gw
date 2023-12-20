@@ -1,2 +1,2 @@
 # iot-edge-gw
-Network Edge Gateway source gateway
+IoT Edge Gateway 
