@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: home-assistant
+  name: matter-server-deployment
+  labels:
+    app: matter-server
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: matter-server
+  template:
+    metadata:
+      labels:
+        app: matter-server
+    spec:
+      containers:
+      - name: matter-server
+        #image: ghcr.io/home-assistant-libs/python-matter-server:stable
+        image: ghcr.io/home-assistant-libs/python-matter-server:4.0.2
+        imagePullPolicy: Always
+        securityContext:
+          # Esto es equivalente a apparmor=unconfined en Docker Compose
+          runAsUser: 0        
+        ports:
+        - containerPort: 5580
+        volumeMounts:
+        - mountPath: /data
+          name: matter-server-config
+        - mountPath: /run/dbus
+          name: matter-server-dbus
+          readOnly: true
+      hostNetwork: true 
+      volumes:
+      - name: matter-server-config
+        hostPath:
+          # directory location on host
+          path: /opt/matter-server
+          # this field is optional
+          type: Directory
+      - name: matter-server-dbus
+        hostPath:
+          # directory location on host
+          path: /run/dbus
+          # this field is optional
+          type: Directory
