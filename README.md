@@ -3,7 +3,7 @@ Source code corresponding to the IoT Edge Gateway module of COGNIFOG.
 
 ## Prerequisites
 Source code has been validated in the following platform:
-- **HW**: Raspberry Pi 4B - 4GB RAM
+- **HW**: Raspberry Pi 4B (4GB RAM and 32GB SD card)
 - **OS**: Debian GNU/Linux 11 (bullseye)
 - **SW**: Lightweight Kubernetes K3S (https://k3s.io/)
 - A K3S installation guide for Raspberry Pi can be found at https://www.padok.fr/en/blog/raspberry-kubernetes
@@ -18,7 +18,7 @@ The current version of the IoT Edge Gateway consists of 2 services split into 4 
   - matter-server-service.yaml: Matter Server service file
 
 ## Installation
-Copy all 4 files into a folder of the Raspberry Pi. Inside that folder, run the following command:
+Copy all 4 aforementioned files into a folder of the Raspberry Pi. Inside that folder, run the following K3S command:
 `kubectl apply -f .`
 
 Check that all services are properly deployed by running:
