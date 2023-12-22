@@ -32,4 +32,4 @@ It may be needed to configure the Matter Server add-on inside Home Assistant. To
 2. Click Add Integration
 3. Type 'Matter' into the field 'Search for a brand name'
 4. Click 'Matter (BETA)'
-5. Check that the URL* field contains 'ws://localhost:5580/ws'
+5. Check that the URL* field contains `ws://localhost:5580/ws`
