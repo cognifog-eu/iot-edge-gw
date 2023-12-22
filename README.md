@@ -18,14 +18,14 @@ The current version of the IoT Edge Gateway consists of 2 services split into 4 
   - matter-server-service.yaml: Matter Server service file
 
 ## Installation
-Copy all 4 files into a folder of Raspberry Pi. Inside that folder, run the following command:
+Copy all 4 files into a folder of the Raspberry Pi. Inside that folder, run the following command:
 `kubectl apply -f .`
 
 Check that all services are properly deployed by running:
 `kubectl get pods -A`
 
 ## Operation
-After a successful installation, Home Assistant should be running at http://[IP_ADDRESS]:8123 
+After a successful installation, Home Assistant should be running at `http://[IP_ADDRESS]:8123` 
 
 It may be needed to configure the Matter Server add-on inside Home Assistant. To do it, follow these steps:
 1. Go to Settings -> Devices & services
