@@ -26,6 +26,7 @@ Check that all services are properly deployed by running:
 
 ## Operation
 After a successful installation, Home Assistant should be running at http://[IP_ADDRESS]:8123 
+
 It may be needed to configure the Matter Server add-on inside Home Assistant. To do it, follow these steps:
 1. Go to Settings -> Devices & services
 2. Click Add Integration
