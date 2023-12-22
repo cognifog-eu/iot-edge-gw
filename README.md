@@ -11,11 +11,11 @@ Source code has been validated in the following platform:
 ## Files
 The current version of the IoT Edge Gateway consists of 2 services split into 4 files (YAML manifests) to be deployed by using K3S:
 - **Home Assistant**: Open-source home automation platform that allows users to control and manage various smart devices and services (https://www.home-assistant.io/)
-  - home-assistant-deploy.yaml: Home Assistant deployment file
-  - home-assistant-service.yaml: Home Assistant service file
+  - `home-assistant-deploy.yaml`: Home Assistant deployment file
+  - `home-assistant-service.yaml`: Home Assistant service file
 - **MATTER controller add-on for Home Assistant**: Plug-in for Home Assistant to control MATTER-based end devices running over WiFi (https://www.home-assistant.io/integrations/matter/)
-  - matter-server-deploy.yaml: Matter Server deployment file
-  - matter-server-service.yaml: Matter Server service file
+  - `matter-server-deploy.yaml`: Matter Server deployment file
+  - `matter-server-service.yaml`: Matter Server service file
 
 ## Installation
 Copy all 4 aforementioned files into a folder of the Raspberry Pi. Inside that folder, run the following K3S command:
