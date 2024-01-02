@@ -18,19 +18,15 @@ The IoT Edge Gateway has been validated in the following platform:
 To avoid having to execute this command after every Raspberry power on, a script in the systemd file can be made to run a script on startup. The instructions are summarized in the following steps:
 1.	Create a bash script file named `StartScript.sh`: 
 `sudo nano StartScript.sh`
-
 2.	Write the following content inside:
 ```
 #!/bin/bash
 sudo iwconfig wlan0 power off
 ```
-
 3.	Make sure the script file is executable, using the following command: 
 `sudo chmod a+x StartScript.sh`
-	
 4.	Create a new startup Systemd File within the `/etc/systemd/system` system file having the `.service` extension. For instance, `/etc/systemd/system/ScriptService.service` file is created using the following command in the nano editor:
 `sudo nano /etc/systemd/system/ScriptService.service`
-
 5.	Write the below content to run the bash script `StartScript.sh` on startup:
 ```
 [Unit]
@@ -49,7 +45,6 @@ WantedBy=default.target
 
 6.	Set the user executable file permissions the Service unit file using the following command:
 `sudo chmod 644 /etc/systemd/system/ScriptService.service`
-
 7.	Use the below-stated command to enable the customized service (which allows the execution on each startup):
 `sudo systemctl enable ScriptService.service`
 
