@@ -60,7 +60,7 @@ The first thing to do is to update and upgrade your Raspberry:
 1. `sudo apt update`
 2. `sudo apt upgrade`
 
-Then, in file `/boot/cmdline.txt` add `cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1` into the end of the file and reboot the Raspberry Pi:
+Then, in file `/boot/cmdline.txt` add `cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1` to the end of the existing line (do not add it as a new line!!) and reboot the Raspberry Pi:
 `sudo nano /boot/cmdline.txt`
 
 The next step installs K3S:
