@@ -35,7 +35,7 @@ sudo iwconfig wlan0 power off
 Description=Custom Startup Script
  
 [Service]
-ExecStart=/home/ubuntu/StartScript.sh
+ExecStart=/home/ubuntu/StartScript.sh  //USE HERE YOUR OWN FOLDER
  
 [Install]
 WantedBy=default.target
@@ -53,7 +53,7 @@ WantedBy=default.target
 
 From now on, every time the system starts/reboots, the script file will execute automatically.
 
-(A comprehensive description of the **A.1. Optional: WiFi permanent connection** step can be found in the description in the following link -check Method 1-: https://itslinuxfoss.com/run-script-startup-ubuntu/)
+(Further information of the **A.1. Optional: WiFi permanent connection** step can be found in **Method 1** section of the following link: https://itslinuxfoss.com/run-script-startup-ubuntu/)
 
 ## B. K3S installation
 - A K3S installation guide for Raspberry Pi can be found at https://www.padok.fr/en/blog/raspberry-kubernetes
