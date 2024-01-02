@@ -71,23 +71,27 @@ And that’s it! You have a Kubernetes cluster running! You can check it with th
 
 (A comprehensive description of **B. K3S installation** step can be found at https://www.padok.fr/en/blog/raspberry-kubernetes. In addition, here is the official rancher documentation to install k3s: https://docs.k3s.io/quick-start)
 
-## C. IoT Edge Gateway manifest files
-The current version of the IoT Edge Gateway consists of 2 services split into 4 files (YAML manifests) to be deployed by using K3S:
+## C. Installation of the IoT Edge Gateway manifest files
+The current version of the IoT Edge Gateway consists of a set of applications split into different files (YAML manifests) to be deployed by using K3S:
 - **Home Assistant**: Open-source home automation platform that allows users to control and manage various smart devices and services (https://www.home-assistant.io/)
   - `home-assistant-deploy.yaml`: Home Assistant deployment file
   - `home-assistant-service.yaml`: Home Assistant service file
 - **MATTER controller add-on for Home Assistant**: Plug-in for Home Assistant to control MATTER-based end devices running over WiFi (https://www.home-assistant.io/integrations/matter/)
   - `matter-server-deploy.yaml`: Matter Server deployment file
   - `matter-server-service.yaml`: Matter Server service file
+- **(Optional) Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
+  - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
 
-## D. Installation of the IoT Edge Gateway manifest files
-Copy all 4 aforementioned files into a folder of the Raspberry Pi. Inside that folder, run the following K3S command:
+To install all applications, copy all files into a folder of the Raspberry Pi and run the following K3S command:
 `kubectl apply -f .`
+
+Alternatively, each application file can be deployed by using the following K3S command:
+`kubectl apply -f [file].yaml`
 
 Check that all services are properly deployed by running:
 `kubectl get pods -A`
 
-## E. Operation
+## D. Operation
 After a successful installation, Home Assistant should be running at `http://[IP_ADDRESS]:8123` 
 
 It may be needed to configure the Matter Server add-on inside Home Assistant. To do it, follow these steps:
@@ -97,7 +101,7 @@ It may be needed to configure the Matter Server add-on inside Home Assistant. To
 4. Click 'Matter (BETA)'
 5. Check that the URL* field contains `ws://localhost:5580/ws`
 
-## F. Other
+## E. Other
 Optionally, end devices can be configured to interact with the IoT Edge Gateway by means of the MATTER protocol. More specifically, this communication has been validated by using ESP32-S2 DevKitM-1 devices (https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) and the firmware provided by Tasmota (https://tasmota.github.io/docs/).
 
 A Tasmota pre-configured file with the configuration of Tasmota 13.1.0 for an ESP32-S2 DevKitM-1 device is provided in the `/tasmota` folder of the current repository. To flash an ESP32-S2 device with this firmware, visit https://tasmota.github.io/install/.
