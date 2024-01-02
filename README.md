@@ -86,7 +86,7 @@ By default, the deployment files of the **Home Assistant** (i.e., `home-assistan
   - Home Assistant: `/home/cognifog/iot-edge-gw/ha-config`
   - Matter controller add-on: `/home/cognifog/iot-edge-gw/matter-server-config`
 
-The creation of these folders is automatized by executing the script `CreateFolders.sh`, included in this repository: `bash CreateFolders.sh`. Alternatively, the user can create different folders as long as they match the definition of the previous deployment files.
+The creation of these folders can be automatized by executing the script `CreateFolders.sh`, included in this repository: `bash CreateFolders.sh`. Alternatively, the user can create different folders as long as they match the definition of the previous deployment files.
 
 Lastly, to install all applications, copy all files into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
 
