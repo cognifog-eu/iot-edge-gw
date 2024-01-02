@@ -57,10 +57,8 @@ From now on, every time the system starts/reboots, the script file will execute 
 
 ## B. K3S installation
 The first thing to do is to update and upgrade your Raspberry:
-
-`sudo apt update`
-
-`sudo apt upgrade`
+1. `sudo apt update`
+2. `sudo apt upgrade`
 
 Then, in file `/boot/cmdline.txt` add `cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1` into the end of the file and reboot the Raspberry Pi:
 `sudo nano /boot/cmdline.txt`
