@@ -20,8 +20,10 @@ The aforementioned instructions are summarized in the following steps:
 `sudo nano StartScript.sh`
 
 2.	Write the following content inside:
-`#!/bin/bash`
-`sudo iwconfig wlan0 power off`
+```
+#!/bin/bash
+sudo iwconfig wlan0 power off
+```
 
 3.	Make sure the script file is executable, using the following command: 
 `sudo chmod a+x StartScript.sh`
@@ -30,14 +32,16 @@ The aforementioned instructions are summarized in the following steps:
 `sudo nano /etc/systemd/system/ScriptService.service`
 
 5.	Write the below content to run the bash script `StartScript.sh` on startup:
-`[Unit]`
-`Description=Custom Startup Script`
+```
+[Unit]
+Description=Custom Startup Script
  
-`[Service]
-`ExecStart=/home/ubuntu/StartScript.sh`
+[Service]
+ExecStart=/home/ubuntu/StartScript.sh
  
-`[Install]`
-`WantedBy=default.target`
+[Install]
+WantedBy=default.target
+```
 
 Unit: It stores the metadata and other information you want to store related to the script.
 Service: Tells the system to execute the desired service, which will run on startup.
