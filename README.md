@@ -2,7 +2,7 @@
 This manual includes all the steps and source code correspoding to the installation of the IoT Edge Gateway module of COGNIFOG into a Raspberry Pi module.
 
 ## A. Prerequisites
-Source code has been validated in the following platform:
+The IoT Edge Gateway has been validated in the following platform:
 - **HW**: Raspberry Pi 4B (4GB RAM and 32GB SD card)
 - **OS**: Debian GNU/Linux 11 (bullseye)
 - **SW**: Lightweight Kubernetes K3S (https://k3s.io/)
@@ -13,9 +13,7 @@ Source code has been validated in the following platform:
 2. `sudo iwconfig wlan0`: To check the status of wlan0 interface
 3. `sudo iwconfig wlan0 power off`: To disable Power Management feature in wlan0
 
-To avoid having to execute this command after every Raspberry power on, a script in the systemd file can be made to run a script on startup. It is necessary to follow the instructions from here (Method 1): https://itslinuxfoss.com/run-script-startup-ubuntu/
-
-The aforementioned instructions are summarized in the following steps:
+To avoid having to execute this command after every Raspberry power on, a script in the systemd file can be made to run a script on startup. The instructions are summarized in the following steps:
 1.	Create a bash script file named `StartScript.sh`: 
 `sudo nano StartScript.sh`
 
@@ -54,6 +52,8 @@ WantedBy=default.target
 `sudo systemctl enable ScriptService.service`
 
 From now on, every time the system starts/reboots, the script file will execute automatically.
+
+(A comprehensive description of the **A.1. Optional: WiFi permanent connection** step can be found in the description in the following link -check Method 1-: https://itslinuxfoss.com/run-script-startup-ubuntu/)
 
 ## B. K3S installation
 - A K3S installation guide for Raspberry Pi can be found at https://www.padok.fr/en/blog/raspberry-kubernetes
