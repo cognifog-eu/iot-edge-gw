@@ -87,6 +87,8 @@ To install all applications, copy all files into a folder of the Raspberry Pi an
 Check that all services are properly deployed by running:
 `kubectl get pods -A`
 
+(Note that the installation of **Home Assistant** and the **Matter controller add-on** can be very slow due to the size of both images: 1.7 GB and 394 MB, respecively, at 02/01/2024)
+
 ## D. Operation
 After a successful installation, Home Assistant should be running at `http://[IP_ADDRESS]:8123` 
 
