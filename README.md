@@ -4,8 +4,7 @@ This manual includes all the steps and source code correspoding to the installat
 ## A. Prerequisites
 The IoT Edge Gateway has been validated in the following platform:
 - **HW**: Raspberry Pi 4B (4GB RAM and 32GB SD card)
-- **OS**: Debian GNU/Linux 11 (bullseye) or Debian GNU/Linux 12 (bookworm). 
-These Linux-based OS distributions can be found in the Raspberry Pi Imager (https://www.raspberrypi.com/software/) under the name `Raspberry Pi OS Lite (64-bit)`. 
+- **OS**: Debian GNU/Linux 11 (bullseye) or Debian GNU/Linux 12 (bookworm). These Linux-based OS distributions can be found in the Raspberry Pi Imager (https://www.raspberrypi.com/software/) under the name `Raspberry Pi OS Lite (64-bit)`. 
 - **SW**: Lightweight Kubernetes K3S (https://k3s.io/)
 
 ### A.1. Optional: WiFi permanent connection
@@ -111,7 +110,7 @@ It may be needed to configure the Matter Server add-on inside Home Assistant. To
 ### D.3. (Optional) Portainer
 Once installed, the Portainer instance will be deployed into your local cluster in a few moments. Navigate to `http://[IP_ADDRESS]:30777` and you will see the home page where we need to set a new password. Add this and hit next.
 
-If the following message appears `Your Portainer instance timed out for security purposes. To re-enable your Portainer instance, you will need to restart Portainer.`, it will be necessary to restart the Portainer application by typing: `kubectl restart [podname]`
+The following message may appear if Portainer is not configured just after its deployment: `Your Portainer instance timed out for security purposes. To re-enable your Portainer instance, you will need to restart Portainer.`. In that case, it will be necessary to restart the Portainer application by typing: `kubectl restart [podname]`.
 
 (The `podname` can be obtained after typing `kubectl get pods -A`)
 
