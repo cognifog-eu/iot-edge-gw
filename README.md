@@ -4,7 +4,7 @@ This manual includes all the steps and source code correspoding to the installat
 ## A. Prerequisites
 The IoT Edge Gateway has been validated in the following platform:
 - **HW**: Raspberry Pi 4B (4GB RAM and 32GB SD card)
-- **OS**: Debian GNU/Linux 11 (bullseye)
+- **OS**: Debian GNU/Linux 11 (bullseye) or Debian GNU/Linux 12 (bookworm)
 - **SW**: Lightweight Kubernetes K3S (https://k3s.io/)
 
 ### A.1. Optional: WiFi permanent connection
