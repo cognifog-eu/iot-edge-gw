@@ -36,7 +36,7 @@ spec:
       - name: matter-server-config
         hostPath:
           # directory location on host
-          path: /opt/matter-server
+          path: /home/cognifog/iot-edge-gw/matter-server-config
           # this field is optional
           type: Directory
       - name: matter-server-dbus

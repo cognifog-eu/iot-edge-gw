@@ -82,7 +82,13 @@ The current version of the IoT Edge Gateway consists of a set of applications sp
 - **(Optional) Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
   - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
 
-To install all applications, copy all files into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
+By default, the deployment files of the **Home Assistant** (i.e., `home-assistant-deploy.yaml`) and the **Matter controller add-on** (`matter-server-deploy.yaml`) will require the existence of some folders in the Raspberry Pi to store the corresponding configuration files:
+  - Home Assistant: `/home/cognifog/iot-edge-gw/ha-config`
+  - Matter controller add-on: `/home/cognifog/iot-edge-gw/matter-server-config`
+
+The creation of these folders is automatized by executing the script `CreateFolders.sh`, included in this repository: `bash CreateFolders.sh`. Alternatively, the user can create different folders as long as they match the definition of the previous deployment files.
+
+Lastly, to install all applications, copy all files into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
 
 Check that all services are properly deployed by running:
 `kubectl get pods -A`
