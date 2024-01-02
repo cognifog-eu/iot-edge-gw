@@ -57,7 +57,9 @@ From now on, every time the system starts/reboots, the script file will execute 
 
 ## B. K3S installation
 The first thing to do is to update and upgrade your Raspberry:
+
 `sudo apt update`
+
 `sudo apt upgrade`
 
 Then, in file `/boot/cmdline.txt` add `cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1` into the end of the file and reboot the Raspberry Pi:
@@ -66,12 +68,10 @@ Then, in file `/boot/cmdline.txt` add `cgroup_enable=cpuset cgroup_enable=memory
 The next step installs K3S:
 `curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644`
 
-Here is the official rancher documentation to install k3s: https://docs.k3s.io/quick-start
-
 And that’s it! You have a Kubernetes cluster running! You can check it with the command:
 `kubectl get pods -A`
 
-(A comprehensive description of **B. K3S installation** step can be found at https://www.padok.fr/en/blog/raspberry-kubernetes)
+(A comprehensive description of **B. K3S installation** step can be found at https://www.padok.fr/en/blog/raspberry-kubernetes. In addition, here is the official rancher documentation to install k3s: https://docs.k3s.io/quick-start)
 
 ## C. IoT Edge Gateway manifest files
 The current version of the IoT Edge Gateway consists of 2 services split into 4 files (YAML manifests) to be deployed by using K3S:
