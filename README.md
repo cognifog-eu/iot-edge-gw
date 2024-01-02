@@ -3,11 +3,11 @@ This manual includes all the steps and source code correspoding to the installat
 
 ## A. Prerequisites
 Source code has been validated in the following platform:
-- **HW**: Raspberry Pi 4B (4GB RAM and 32GB SD card, or higher)
-- **OS**: Debian GNU/Linux 11 (bullseye), or higher
+- **HW**: Raspberry Pi 4B (4GB RAM and 32GB SD card)
+- **OS**: Debian GNU/Linux 11 (bullseye)
 - **SW**: Lightweight Kubernetes K3S (https://k3s.io/)
 
-### Optional: WiFi permanent connection
+### A.1. Optional: WiFi permanent connection
 - After connected to a WiFi network (normally, if the network is created by a laptop in the so called softAP process), the Raspberry Pi may disconnect after a certain period of time (normally, after less than one hour). One possible cause of this malfunctioning is the Power Management feature of its wireless interface. A potential solution to alleviate this problem is to disconnect the Power Management mode. To do it, it is necessary to type the following commands:
 1. `sudo apt install wireless-tools`: To install the wireless tools
 2. `sudo iwconfig wlan0`: To check the status of wlan0 interface
@@ -43,9 +43,9 @@ ExecStart=/home/ubuntu/StartScript.sh
 WantedBy=default.target
 ```
 
-Unit: It stores the metadata and other information you want to store related to the script.
-Service: Tells the system to execute the desired service, which will run on startup.
-Install: Allows the service to run the WantedBy directory at the startup to handle the dependencies.
+- **Unit**: It stores the metadata and other information you want to store related to the script.
+- **Service**: Tells the system to execute the desired service, which will run on startup.
+- **Install**: Allows the service to run the WantedBy directory at the startup to handle the dependencies.
 
 6.	Set the user executable file permissions the Service unit file using the following command:
 `sudo chmod 644 /etc/systemd/system/ScriptService.service`
