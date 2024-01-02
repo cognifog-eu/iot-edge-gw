@@ -101,7 +101,7 @@ It may be needed to configure the Matter Server add-on inside Home Assistant. To
 4. Click 'Matter (BETA)'
 5. Check that the URL* field contains `ws://localhost:5580/ws`
 
-### D.3. Portainer
+### D.3. (Optional) Portainer
 Once installed, the Portainer instance will be deployed into your local cluster in a few moments. Navigate to `http://[IP_ADDRESS]:30777` and you will see the home page where we need to set a new password. Add this and hit next.
 
 ## E. Other
