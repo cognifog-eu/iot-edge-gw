@@ -90,14 +90,19 @@ Check that all services are properly deployed by running:
 (Note that the installation of **Home Assistant** and the **Matter controller add-on** can be very slow due to the size of both images: 1.7 GB and 394 MB, respectively, at 02/01/2024)
 
 ## D. Operation
+### Home Assistant
 After a successful installation, Home Assistant should be running at `http://[IP_ADDRESS]:8123` 
 
+### Matter controller add-on
 It may be needed to configure the Matter Server add-on inside Home Assistant. To do it, follow these steps:
 1. Go to Settings -> Devices & services
 2. Click Add Integration
 3. Type 'Matter' into the field 'Search for a brand name'
 4. Click 'Matter (BETA)'
 5. Check that the URL* field contains `ws://localhost:5580/ws`
+
+### Portainer
+Once installed, the Portainer instance will be deployed into your local cluster in a few moments. Navigate to `http://[IP_ADDRESS]:30777` and you will see the home page where we need to set a new password. Add this and hit next.
 
 ## E. Other
 Optionally, end devices can be configured to interact with the IoT Edge Gateway by means of the MATTER protocol. More specifically, this communication has been validated by using ESP32-S2 DevKitM-1 devices (https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) and the firmware provided by Tasmota (https://tasmota.github.io/docs/).
