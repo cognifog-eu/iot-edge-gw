@@ -35,7 +35,7 @@ sudo iwconfig wlan0 power off
 Description=Custom Startup Script
  
 [Service]
-ExecStart=/home/ubuntu/StartScript.sh  //USE HERE YOUR OWN FOLDER
+ExecStart=/home/ubuntu/StartScript.sh  # USE HERE YOUR OWN FOLDER
  
 [Install]
 WantedBy=default.target
