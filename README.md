@@ -82,11 +82,7 @@ The current version of the IoT Edge Gateway consists of a set of applications sp
 - **(Optional) Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
   - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
 
-To install all applications, copy all files into a folder of the Raspberry Pi and run the following K3S command:
-`kubectl apply -f .`
-
-Alternatively, each application file can be deployed by using the following K3S command:
-`kubectl apply -f [file].yaml`
+To install all applications, copy all files into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
 
 Check that all services are properly deployed by running:
 `kubectl get pods -A`
