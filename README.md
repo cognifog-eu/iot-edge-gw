@@ -79,7 +79,7 @@ The current version of the IoT Edge Gateway consists of a set of applications sp
 - **(Optional) Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
   - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
 
-By default, the deployment files of the **Home Assistant** (i.e., `home-assistant-deploy.yaml`) and the **Matter controller add-on** (`matter-server-deploy.yaml`) will require the existence of some folders in the Raspberry Pi to store the corresponding configuration files:
+By default, the deployment files of the **Home Assistant** (i.e., `home-assistant-deploy.yaml`) and the **Matter controller add-on** (i.e., `matter-server-deploy.yaml`) require the existence of some folders in the Raspberry Pi to store the corresponding configuration files:
   - Home Assistant: `/home/cognifog/iot-edge-gw/ha-config`
   - Matter controller add-on: `/home/cognifog/iot-edge-gw/matter-server-config`
 
@@ -90,7 +90,7 @@ Lastly, to install all applications, copy all files from the `/manifests` folder
 Check that all services are properly deployed by running:
 `kubectl get pods -A`
 
-(Note that the installation of **Home Assistant** and the **Matter controller add-on** can be very slow due to the size of both images: 1.7 GB and 394 MB, respectively, at 02/01/2024)
+(Note that the installation of **Home Assistant** and the **Matter controller add-on** can be very slow due to the size of both images: 1.7 GB and 394 MB, respectively, in versions employed at 02/01/2024)
 
 ## D. Operation
 ### D.1. Home Assistant
