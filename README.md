@@ -111,11 +111,13 @@ The following message may appear if Portainer is not configured just after its d
 
 ## E. Integration with OCM
 An external OCM Manager node can be used as an Orchestrator of the deployed IoT Edge Gateway(s). To connect the IoT Edge Gateway(s) to that system it is necessary to follow these steps:
-1. Install `clusteradm`, which is the tool used for managing OCM Clusters (Managers and Agents; in this case: Agent). This tool may be installed inside of the Raspberry Pi, for example, where K3S is running locally. Alternatively, `clusteradm` can be installed in another machine (e.g., a laptop) and manage the cluster remotely. In any case, the command to install OCM `clusteradm` is: 
+1. Install `clusteradm`, which is the tool used for managing OCM Clusters (Managers and Agents; in this case: Agent). This tool may be installed inside of the Raspberry Pi where K3S is running locally. First, it is necessary to execute: `cp /etc/rancher/k3s/k3s.yaml .kube/config`. And then, the command to install OCM `clusteradm` is: 
 `curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash`
+
+Alternatively, `clusteradm` can be installed in another machine (e.g., a laptop) and manage the cluster remotely. In this case, it is only necessary to execute `curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash`
 2. Then, it is necessary to request a managed cluster to join the hub. It can be done with the following command (or a similar one provided by the hub administrator):
 `clusteradm join --hub-token <token> --hub-apiserver <api server url> --cluster-name <cluster name>`
-3. It is worth noting that sometimes the hub administrator will also provide a server certificate file (.crt) that must be included in the same folder where the previous command (i.e., that from step #2) is executed.
+3. It is worth noting that sometimes the hub administrator will also provide a server certificate file (.crt) that must be included in the same folder where the previous command (i.e., that from step #2) is executed. Further information can be found here: https://open-cluster-management.io/getting-started/installation/register-a-cluster/
 
 ## F. Other
 Optionally, end devices can be configured to interact with the IoT Edge Gateway by means of the MATTER protocol. More specifically, this communication has been validated by using ESP32-S2 DevKitM-1 devices (https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) and the firmware provided by Tasmota (https://tasmota.github.io/docs/).
