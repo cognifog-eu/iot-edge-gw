@@ -116,7 +116,7 @@ An external OCM Manager node can be used as an Orchestrator of the deployed IoT 
 `curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash`  
   1.2. Alternatively, `clusteradm` can be installed in another machine (e.g., a laptop) and manage the cluster remotely. In this case, it is only necessary to execute `curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash`
 2. Then, it is necessary to request a managed cluster to join the hub. It can be done with the following command (or a similar one provided by the hub administrator):
-`clusteradm join --hub-token <token> --hub-apiserver <api server url> --cluster-name <cluster name>`
+`clusteradm join --hub-token <token> --hub-apiserver <api server url> --wait --cluster-name <cluster name> --ca-file=<server certificate .crt file>`
 3. It is worth noting that sometimes the hub administrator will also provide a server certificate file (.crt) that must be included in the same folder where the previous command (i.e., that from step #2) is executed. Further information can be found here: https://open-cluster-management.io/getting-started/installation/register-a-cluster/
 
 ## F. Other
