@@ -113,7 +113,7 @@ The following message may appear if Portainer is not configured just after its d
 An external OCM Manager node can be used as an Orchestrator of the deployed IoT Edge Gateway(s). To connect the IoT Edge Gateway(s) to that system it is necessary to follow these steps:
 1. Install `clusteradm`, which is the tool used for managing OCM Clusters (Managers and Agents; in this case: Agent). This tool may be installed inside of the Raspberry Pi where K3S is running locally or, alternatively, in another machine (e.g., a laptop) and manage the cluster remotely. In any case, the command to install OCM `clusteradm` is: 
 `curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash`
-2. Only if the installation has been performed in a Raspberry Pi, to finish the installation of OCM it is necessary to execute: `cp /etc/rancher/k3s/k3s.yaml .kube/config`
+2. Only if the installation has been performed in a Raspberry Pi, it is necessary to execute the following command to finish the installation of OCM: `cp /etc/rancher/k3s/k3s.yaml .kube/config`
 3. Then, the command for a managed cluster to join the hub is: `clusteradm join --hub-token <token> --hub-apiserver <api server url> --wait --cluster-name <cluster name> --ca-file=<server certificate .crt file>` (or a similar one provided by the hub administrator)
 4. In case the hub administrator requires a server certificate file (.crt), it must be included in the same folder where the previous command is executed (i.e., that from step #2). Further information can be found here: https://open-cluster-management.io/getting-started/installation/register-a-cluster/
 
