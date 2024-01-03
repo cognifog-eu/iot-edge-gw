@@ -115,6 +115,7 @@ An external OCM Manager node can be used as an Orchestrator of the deployed IoT 
 `curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash`
 2. Then, it is necessary to request a managed cluster to join the hub. It can be done with the following command (or a similar one provided by the hub administrator):
 `clusteradm join --hub-token <token> --hub-apiserver <api server url> --cluster-name <cluster name>`
+3. It is worth noting that sometimes the hub administrator will also provide a server certificate file (.crt) that must be included in the same folder where the previous command (i.e., that from step #2) is executed.
 
 ## F. Other
 Optionally, end devices can be configured to interact with the IoT Edge Gateway by means of the MATTER protocol. More specifically, this communication has been validated by using ESP32-S2 DevKitM-1 devices (https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) and the firmware provided by Tasmota (https://tasmota.github.io/docs/).
