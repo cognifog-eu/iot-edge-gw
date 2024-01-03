@@ -71,10 +71,10 @@ And that’s it! You have a Kubernetes cluster running! You can check it with th
 ## C. Installation of the IoT Edge Gateway manifest files
 The current version of the IoT Edge Gateway consists of a set of applications split into different files (YAML manifests) to be deployed by using K3S. All of them are available in the `/manifests` folder of this repository:
 - **Home Assistant**: Open-source home automation platform that allows users to control and manage various smart devices and services (https://www.home-assistant.io/)
-  - `home-assistant-deploy.yaml`: Home Assistant deployment file
+  - `home-assistant-deploy.yaml`: Home Assistant deployment file (`stable` release, validated at 02/01/2024 for 2023.12.4 version)
   - `home-assistant-service.yaml`: Home Assistant service file
 - **MATTER controller add-on for Home Assistant**: Plug-in for Home Assistant to control MATTER-based end devices running over WiFi (https://www.home-assistant.io/integrations/matter/)
-  - `matter-server-deploy.yaml`: Matter Server deployment file
+  - `matter-server-deploy.yaml`: Matter Server deployment file (`4.0.2` release, validated at 02/01/2024)
   - `matter-server-service.yaml`: Matter Server service file
 - **(Optional) Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
   - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
