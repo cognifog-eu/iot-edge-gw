@@ -2,6 +2,8 @@
 This section includes a set of template files to preconfigure Home Assistant. 
 To apply any configuration, copy the .zip file into the Raspberry Pi, unzip it, and paste it into `/home/cognifog/iot-edge-gw/ha-config`, replacing all previously existing files.
 
+Check the section **Migrating to a new system** from https://www.home-assistant.io/docs/configuration/ for further information on how to backup and restore the configuration of Home Assistant.
+
 ## A. ha-config-v1.0.rar
 Minimal configuration of Home Assistant, with the following configured capabilities:
 - Integration with the MATTER controller add-on for Home Assistant
