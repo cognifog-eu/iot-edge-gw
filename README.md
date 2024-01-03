@@ -92,11 +92,13 @@ Check that all services are properly deployed by running:
 
 (Note that the installation of **Home Assistant** and the **Matter controller add-on** can be very slow due to the size of both images: 1.7 GB and 394 MB, respectively, in versions employed at 02/01/2024)
 
-## D. Operation
+## D. Configuration and operation
+The following subsections describe how to configure and operate the different deployed applications. Alternatively, some folders in this repository include configuration templates to ease this task (e.g., the `/ha-config` repository includes a set of template files to configure Home Assistant).
+
 ### D.1. Home Assistant
 After a successful installation, Home Assistant should be running at `http://[IP_ADDRESS]:8123` 
 
-### D.2. Matter controller add-on
+### D.2. Matter controller add-on for Home Assistant
 It may be needed to configure the Matter Server add-on inside Home Assistant. To do it, follow these steps:
 1. Go to Settings -> Devices & services
 2. Click Add Integration
