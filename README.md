@@ -109,7 +109,13 @@ Once installed, the Portainer instance will be deployed into your local cluster 
 
 The following message may appear if Portainer is not configured just after its deployment: `Your Portainer instance timed out for security purposes. To re-enable your Portainer instance, you will need to restart Portainer.` In that case, it will be necessary to restart the Portainer deployment by typing: `kubectl rollout restart deployment portainer -n portainer`.
 
-## E. Other
+## E. Integration with OCM
+An external OCM Manager node can be used as an Orchestrator of the deployed IoT Edge Gateway(s). To connect the IoT Edge Gateway(s) to that system it is necessary to follow these steps:
+1. Install `clusteradm`, which is the tool used for managing OCM Clusters (Managers and Agents; in this case: Agent). This tool may be installed inside of the Raspberry Pi, for example, where K3S is running locally. Alternatively, `clusteradm` can be installed in another machine (e.g., a laptop) and manage the cluster remotely. In any case, the command to install OCM `clusteradm` is: `curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash`
+2. Then, it is necessary to request a managed cluster to join the hub. It cam be done with the following command (or a similar one provided by the hub administrator):
+`clusteradm join --hub-token <token> --hub-apiserver <api server url> --cluster-name <cluster name>`
+
+## F. Other
 Optionally, end devices can be configured to interact with the IoT Edge Gateway by means of the MATTER protocol. More specifically, this communication has been validated by using ESP32-S2 DevKitM-1 devices (https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) and the firmware provided by Tasmota (https://tasmota.github.io/docs/).
 
 A Tasmota pre-configured file with the configuration of Tasmota 13.1.0 for an ESP32-S2 DevKitM-1 device is provided in the `/tasmota` folder of the current repository. To flash an ESP32-S2 device with this firmware, visit https://tasmota.github.io/install/.
