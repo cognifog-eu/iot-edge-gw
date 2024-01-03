@@ -106,7 +106,15 @@ It may be needed to configure the Matter Server add-on inside Home Assistant. To
 4. Click 'Matter (BETA)'
 5. Check that the URL* field contains `ws://localhost:5580/ws`
 
-### D.3. (Optional) Portainer
+### D.3. MQTT client for Home Assistant
+Unfortunately, at 02/01/2024, the MQTT client for Home Assistant can only be configured by using the GUI of Home Assistant (https://community.home-assistant.io/t/automate-mqtt-broker-integration-set-up/607558/4). To do it, follow these steps:
+1. Go to Settings -> Devices & services
+2. Click Add Integration
+3. Type 'MQTT' into the field 'Search for a brand name'
+4. Click 'MQTT'
+5. Fill the requested fields: i.e., broker, port, username, and password
+
+### D.4. (Optional) Portainer
 Once installed, the Portainer instance will be deployed into your local cluster in a few moments. Navigate to `http://[IP_ADDRESS]:30777` and you will see the home page where we need to set a new password. Add this and hit next.
 
 The following message may appear if Portainer is not configured just after its deployment: `Your Portainer instance timed out for security purposes. To re-enable your Portainer instance, you will need to restart Portainer.` In that case, it will be necessary to restart the Portainer deployment by typing: `kubectl rollout restart deployment portainer -n portainer`.

@@ -8,5 +8,5 @@ Minimal configuration of Home Assistant, with the following configured capabilit
 - Configuration of an MQTT client in Home Assistant that can be connected to an external MQTT broker with the following features:
   - MQTT broker IP address: `84.88.36.141`
   - MQTT broker port: `1883`
-  - MQTT client user: `i2cat`
+  - MQTT client username: `i2cat`
   - MQTT client password: `<protected>`
