@@ -16,7 +16,7 @@ The IoT Edge Gateway has been validated in the following platform:
 3. `sudo iwconfig wlan0 power off`: To disable Power Management feature in wlan0
 
 To avoid having to execute this command after every Raspberry power on, a script in the systemd file can be made to run a script on startup. The instructions are summarized in the following steps:
-1.	Create a bash script file named `StartScript.sh`: 
+1.	Create a bash script file named `StartScript.sh` (or copy the one provided in the `/scripts` folder of this repository): 
 `sudo nano StartScript.sh`
 2.	Write the following content inside:
 ```
@@ -69,7 +69,7 @@ And that’s it! You have a Kubernetes cluster running! You can check it with th
 (A comprehensive description of **B. K3S installation** step can be found at https://www.padok.fr/en/blog/raspberry-kubernetes. In addition, here is the official rancher documentation to install k3s: https://docs.k3s.io/quick-start)
 
 ## C. Installation of the IoT Edge Gateway manifest files
-The current version of the IoT Edge Gateway consists of a set of applications split into different files (YAML manifests) to be deployed by using K3S:
+The current version of the IoT Edge Gateway consists of a set of applications split into different files (YAML manifests) to be deployed by using K3S. All of them are available in the `/manifests` folder of this repository:
 - **Home Assistant**: Open-source home automation platform that allows users to control and manage various smart devices and services (https://www.home-assistant.io/)
   - `home-assistant-deploy.yaml`: Home Assistant deployment file
   - `home-assistant-service.yaml`: Home Assistant service file
@@ -83,9 +83,9 @@ By default, the deployment files of the **Home Assistant** (i.e., `home-assistan
   - Home Assistant: `/home/cognifog/iot-edge-gw/ha-config`
   - Matter controller add-on: `/home/cognifog/iot-edge-gw/matter-server-config`
 
-The creation of these folders can be automatized by executing the script `CreateFolders.sh`, included in this repository: `bash CreateFolders.sh`. Alternatively, the user can create different folders as long as they match the definition of the previous deployment files.
+The creation of these folders can be automatized by executing the script `CreateFolders.sh`, included in the `/scripts` folder of this repository. Just copy the `CreateFolders.sh` file into the Raspberry Pi and execute `bash CreateFolders.sh`. Alternatively, the user can create different folders as long as they match the definition of the previous deployment files.
 
-Lastly, to install all applications, copy all files into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
+Lastly, to install all applications, copy all files from the `/manifests` folder of this repository into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
 
 Check that all services are properly deployed by running:
 `kubectl get pods -A`
