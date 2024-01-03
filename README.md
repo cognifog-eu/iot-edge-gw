@@ -4,10 +4,10 @@ This manual includes all the steps and source code corresponding to the installa
 ## A. Prerequisites
 The IoT Edge Gateway has been validated in the following platform:
 - **HW**: Raspberry Pi 4B (4GB RAM and 32GB SD card)
-- **OS**: Debian GNU/Linux 11 (bullseye) or Debian GNU/Linux 12 (bookworm). These Linux-based OS distributions can be found in the Raspberry Pi Imager (https://www.raspberrypi.com/software/) under the name `Raspberry Pi OS Lite (64-bit)`. 
+- **OS**: Debian GNU/Linux 11 (bullseye) and Debian GNU/Linux 12 (bookworm). These Linux-based OS distributions can be found in the Raspberry Pi Imager (https://www.raspberrypi.com/software/) under the name `Raspberry Pi OS Lite (64-bit)`. 
 - **SW**: Lightweight Kubernetes K3S (https://k3s.io/)
 
-(This manual has been explicitly created for a Raspberry Pi with `cognifog` as hostname).
+(This manual has been created purposely for a Raspberry Pi with `cognifog` as hostname).
 
 ### A.1. Optional: WiFi permanent connection
 - After connected to a WiFi network (normally, if the network is created by a laptop in the so called softAP process), the Raspberry Pi may disconnect after a certain period of time (normally, after less than one hour). One possible cause of this malfunctioning is the Power Management feature of its wireless interface. A potential solution to alleviate this problem is to disconnect the Power Management mode. To do it, it is necessary to type the following commands:
