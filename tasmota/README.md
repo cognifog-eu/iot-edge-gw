@@ -15,8 +15,7 @@ Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 04/01/2024 w
   - 1 Temperature + humidity sensor (DHT22; mapped in Tasmota as AM2301) 
 - Teleperiod (seconds): `30`
 - Matter compatibility:
-  - 3 predefined endpoints (see attached table) 
-
+  - 3 predefined endpoints (see attached table)  
   | Endpoint   | Type            | Parameter            |
   |------------|-----------------|----------------------|
   |     1      | Light 3 RGB     | _Not used_           |
