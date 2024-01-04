@@ -11,13 +11,13 @@ Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 04/01/2024 w
   - SSID: `iot_responda`
   - Password: `<protected>`
 - Sensors:
-  - 1 RGB led sensor (WS2812)
-  - 1 Temperature + humidity sensor (DHT22; mapped in Tasmota as AM2301) 
+  - 1 RGB led sensor (WS2812) in GPIO18
+  - 1 Temperature + humidity sensor (DHT22; mapped in Tasmota as AM2301) in GPIO17
 - Teleperiod (seconds): `30`
 - Matter compatibility with 3 predefined endpoints (see attached table)  
 
 | Endpoint   | Type            | Parameter            |
 |------------|-----------------|----------------------|
-|     1      | Light 3 RGB     | _Not used_           |
+|     1      | Light 3 RGB     | *_Not used_*         |
 |     2      | Temperature     | AM2301#Temperature   |
 |     3      | Humidity        | AM2301#Humidity      |
