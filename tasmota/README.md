@@ -13,7 +13,7 @@ Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 04/01/2024 w
 - Sensors:
   - 1 RGB led sensor (WS2812) in GPIO18
   - 1 Temperature + humidity sensor (DHT22; mapped in Tasmota as AM2301) in GPIO17
-- Teleperiod (seconds): `30`
+- Teleperiod (i.e., sensor data update rate) in seconds: `30`
 - Matter compatibility with 3 predefined endpoints (see attached table)  
 
 | Endpoint   | Type            | Parameter            |
