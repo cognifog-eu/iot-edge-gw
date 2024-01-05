@@ -6,7 +6,7 @@ This section includes a set of template files to preconfigure ESP32-S2 devices b
 ## A. Config_tasmota_069412_5138_13.3.0.dmp
 Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 04/01/2024 with the following features:
 - Device Name (*Model* field in Home Assistant menu): `ESP32`
-- Friendly Name (*Device* field in Home Assistant menu): `Tasmota1`
+- Friendly Name (*Device* field in Home Assistant menu): `Tasmota1` (please change the name to `Tasmota<X>` by using the Tasmota web installer https://tasmota.github.io/install/ or directly connecting to the ESP32-S2 via WiFi)
 - Wifi connectivity:
   - SSID: `iot_responda`
   - Password: `<protected>`

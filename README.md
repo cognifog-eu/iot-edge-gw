@@ -130,4 +130,4 @@ An external OCM Manager node can be used as an Orchestrator of the deployed IoT 
 ## F. Other
 Optionally, end devices can be configured to interact with the IoT Edge Gateway by means of the MATTER protocol. More specifically, this communication has been validated by using ESP32-S2 DevKitM-1 devices (https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) and the firmware provided by Tasmota (https://tasmota.github.io/docs/).
 
-A Tasmota pre-configured file with the configuration of Tasmota 13.1.0 for an ESP32-S2 DevKitM-1 device is provided in the `/tasmota` folder of the current repository. To flash an ESP32-S2 device with this firmware, visit https://tasmota.github.io/install/.
+A Tasmota pre-configured file with the configuration of Tasmota 13.1.0 for an ESP32-S2 DevKitM-1 device is provided in the `/tasmota` folder of the current repository. To flash an ESP32-S2 device with this firmware, visit its web installer: https://tasmota.github.io/install/.
