@@ -1,0 +1,226 @@
+- id: '1704368386995'
+  alias: AUT_hum
+  description: Forward humidity value to MQTT broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_humidity
+    - sensor.tasmota2_humidity
+    - sensor.tasmota3_humidity
+    - sensor.tasmota4_humidity
+    - sensor.tasmota5_humidity
+    - sensor.tasmota6_humidity
+    - sensor.tasmota7_humidity
+    - sensor.tasmota8_humidity
+    - sensor.tasmota9_humidity
+    - sensor.tasmota10_humidity
+  condition:
+  - condition: template
+    value_template: '{{ trigger.to_state.state | float < 100 and trigger.to_state.state
+      | float > -1 }}'
+  action:
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      retain: true
+      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
+        | replace('_humidity', '') }}/hum
+      payload_template: '{{now().isoformat("T","milliseconds")}},{{trigger.to_state.state}}'
+  mode: single
+- id: '1704371656082'
+  alias: AUT_temp_ext
+  description: Forward (external) temperature value to MQTT broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_temperature
+    - sensor.tasmota2_temperature
+    - sensor.tasmota3_temperature
+    - sensor.tasmota4_temperature
+    - sensor.tasmota5_temperature
+    - sensor.tasmota6_temperature
+    - sensor.tasmota7_temperature
+    - sensor.tasmota8_temperature
+    - sensor.tasmota9_temperature
+    - sensor.tasmota10_temperature
+  condition:
+  - condition: template
+    value_template: '{{ trigger.to_state.state | float < 100 and trigger.to_state.state
+      | float > -1 }}'
+  action:
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      retain: true
+      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
+        | replace('_temperature', '') }}/temp-ext
+      payload_template: '{{now().isoformat("T","milliseconds")}},{{trigger.to_state.state}}'
+  mode: single
+- id: '1704373160875'
+  alias: AUT_hum_unav
+  description: Forward unavailability of the humidity sensor to the MQTT broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_humidity
+    - sensor.tasmota2_humidity
+    - sensor.tasmota3_humidity
+    - sensor.tasmota4_humidity
+    - sensor.tasmota5_humidity
+    - sensor.tasmota6_humidity
+    - sensor.tasmota7_humidity
+    - sensor.tasmota8_humidity
+    - sensor.tasmota9_humidity
+    - sensor.tasmota10_humidity
+    from:
+    to: unavailable
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
+        | replace('_humidity', '') }}/hum/status
+      payload_template: '{{now().isoformat("T","milliseconds")}},offline'
+  mode: single
+- id: '1704445506900'
+  alias: AUT_temp_ext_unav
+  description: Forward unavailability of the (external) temperature sensor to the
+    MQTT broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_temperature
+    - sensor.tasmota2_temperature
+    - sensor.tasmota3_temperature
+    - sensor.tasmota4_temperature
+    - sensor.tasmota5_temperature
+    - sensor.tasmota6_temperature
+    - sensor.tasmota7_temperature
+    - sensor.tasmota8_temperature
+    - sensor.tasmota9_temperature
+    - sensor.tasmota10_temperature
+    from:
+    to: unavailable
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
+        | replace('_temperature', '') }}/temp-ext/status
+      payload_template: '{{now().isoformat("T","milliseconds")}},offline'
+  mode: single
+- id: '1704446875187'
+  alias: AUT_hum_av
+  description: Forward availability of the humidity sensor to the MQTT broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_humidity
+    - sensor.tasmota2_humidity
+    - sensor.tasmota3_humidity
+    - sensor.tasmota4_humidity
+    - sensor.tasmota5_humidity
+    - sensor.tasmota6_humidity
+    - sensor.tasmota7_humidity
+    - sensor.tasmota8_humidity
+    - sensor.tasmota9_humidity
+    - sensor.tasmota10_humidity
+    from: unavailable
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
+        | replace('_humidity', '') }}/hum/status
+      payload_template: '{{now().isoformat("T","milliseconds")}},online'
+  mode: single
+- id: '1704447193665'
+  alias: AUT_temp_ext_av
+  description: Forward availability of the (external) temperature sensor to the MQTT
+    broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_temperature
+    - sensor.tasmota2_temperature
+    - sensor.tasmota3_temperature
+    - sensor.tasmota4_temperature
+    - sensor.tasmota5_temperature
+    - sensor.tasmota6_temperature
+    - sensor.tasmota7_temperature
+    - sensor.tasmota8_temperature
+    - sensor.tasmota9_temperature
+    - sensor.tasmota10_temperature
+    from: unavailable
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
+        | replace('_temperature', '') }}/temp-ext/status
+      payload_template: '{{now().isoformat("T","milliseconds")}},online'
+  mode: single
+- id: '1704453446805'
+  alias: AUT_HA_on
+  description: IoT Edge GW is online
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/status'
+      payload: online
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/attributes/latitude'
+      payload_template: '{{state_attr(''zone.home'',''latitude'')}}'
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/attributes/longitude'
+      payload_template: '{{state_attr(''zone.home'',''longitude'')}}'
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/attributes/elevation'
+      payload_template: '{{state_attr(''zone.home'',''elevation'')}}'
+  mode: single
+- id: '1704453676134'
+  alias: AUT_HA_off
+  description: IoT Edge GW is offline
+  trigger:
+  - platform: homeassistant
+    event: shutdown
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/status'
+      payload: offline
+  mode: single

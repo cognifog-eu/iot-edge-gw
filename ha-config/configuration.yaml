@@ -1,0 +1,23 @@
+homeassistant:
+  name: edge-gw-2
+  latitude: 41.3568635
+  longitude: 2.1015533
+  elevation: 18.54
+  unit_system: metric
+  currency: EUR
+  country: ES
+  time_zone: "Europe/Madrid"
+  external_url: "https://www.home-assistant.com"
+  internal_url: "http://homeassistant.local:8123"
+  legacy_templates: false
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml

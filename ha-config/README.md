@@ -18,8 +18,14 @@ Minimal configuration of Home Assistant, with the following configured capabilit
 - Deactivation of the flag 'Automatically close connection' to the server after being hidden for 5 minutes
 
 ## B. configuration.yaml
-*To complete*
+The basic information of the Home Assistance must be included in the `configuration.yaml` file (https://www.home-assistant.io/docs/configuration/basic). Please change the fields under the `homeassistant` topic accordingly:
+- name: `edge-gw-<X>` (being `X` a unique number)
+- latitude: <latitude>
+- longitude: <longitude>
+- elevation: <elevation>
+- etc
 
 ## C. automations.yaml
-*To complete*
-
+The current version of the `automations.yaml` in this repository includes the following automations:
+- AUT_hum
+- AUT_temp_ext
