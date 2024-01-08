@@ -14,4 +14,4 @@ Minimal configuration of Home Assistant, with the following configured capabilit
   - MQTT client password: `<protected>`
   - 'Birth' and 'will' messages of MQTT have been removed (it is better to configure them via automations to also provide the identifier of the Home Assistant's instance)
 - Activation of Home Assistant's *Advanced Mode* (https://www.home-assistant.io/blog/2019/07/17/release-96/#advanced-mode)
-- Desactivation of the flag 'Automatically close connection' to the server after being hidden for 5 minutes
+- Deactivation of the flag 'Automatically close connection' to the server after being hidden for 5 minutes
