@@ -20,12 +20,18 @@ Minimal configuration of Home Assistant, with the following configured capabilit
 ## B. configuration.yaml
 The basic information of the Home Assistance must be included in the `configuration.yaml` file (https://www.home-assistant.io/docs/configuration/basic). Please change the fields under the `homeassistant` topic accordingly:
 - name: `edge-gw-<X>` (being `X` a unique number)
-- latitude: <latitude>
-- longitude: <longitude>
-- elevation: <elevation>
+- latitude: `<latitude>`
+- longitude: `<longitude>`
+- elevation: `<elevation>`
 - etc
 
 ## C. automations.yaml
 The current version of the `automations.yaml` in this repository includes the following automations:
-- AUT_hum
-- AUT_temp_ext
+- AUT_hum: Forward humidity value to MQTT broker
+- AUT_temp_ext: Forward (external) temperature value to MQTT broker
+- AUT_hum_unav: Forward unavailability of the humidity sensor to the MQTT broker
+- AUT_temp_ext_unav: Forward unavailability of the (external) temperature sensor to the MQTT broker
+- AUT_hum_av: Forward availability of the humidity sensor to the MQTT broker
+- AUT_temp_ext_av: Forward availability of the (external) temperature sensor to the MQTT broker
+- AUT_HA_on: IoT Edge GW is online
+- AUT_HA_off: IoT Edge GW is offline 
