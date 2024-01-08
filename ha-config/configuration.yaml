@@ -1,8 +1,8 @@
 homeassistant:
   name: edge-gw-2
-  latitude: 41.3568635
-  longitude: 2.1015533
-  elevation: 18.54
+  latitude: 41.3874024
+  longitude: 2.1118502
+  elevation: 15
   unit_system: metric
   currency: EUR
   country: ES

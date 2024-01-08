@@ -189,7 +189,7 @@
       qos: 0
       retain: true
       topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/status'
-      payload: online
+      payload_template: '{{now().isoformat("T","milliseconds")}},online'
   - service: mqtt.publish
     data:
       qos: 0
@@ -202,12 +202,6 @@
       retain: true
       topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/attributes/longitude'
       payload_template: '{{state_attr(''zone.home'',''longitude'')}}'
-  - service: mqtt.publish
-    data:
-      qos: 0
-      retain: true
-      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/attributes/elevation'
-      payload_template: '{{state_attr(''zone.home'',''elevation'')}}'
   mode: single
 - id: '1704453676134'
   alias: AUT_HA_off
@@ -222,5 +216,5 @@
       qos: 0
       retain: true
       topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/status'
-      payload: offline
+      payload_template: '{{now().isoformat("T","milliseconds")}},offline'
   mode: single
