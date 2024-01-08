@@ -1,12 +1,18 @@
-# Tasmota configuration templates
-This section includes a set of template files to preconfigure ESP32-S2 devices based on the Tasmota firmware.
+# Configuration of MATTER-based devices via Tasmota
+End devices can be configured to interact with the IoT Edge Gateway by means of the MATTER protocol. More specifically, this communication has been validated by using ESP32-S2 DevKitM-1 devices (https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) and the firmware provided by Tasmota (https://tasmota.github.io/docs/).
 
-*(Include information here on how to restore a configuration file into a fresh ESP32-S2 device)*
+A Tasmota pre-configured file with the configuration of Tasmota 13.1.0 for an ESP32-S2 DevKitM-1 device is provided in this folder. To flash an ESP32-S2 device with this firmware, connect the ESP32-S2 to a laptop via USB and visit its web installer: https://tasmota.github.io/install/. Then, follow these steps:
+1. Click 'CONNECT' and select the COM port to which the device is connected
+2. Press 'INSTALL TASMOTA (ENGLISH)' (the device's memory will be erased to install the new firmware)
+3. Once the installation is finished, configure the WiFi network appropiately
+4. Then navigate with the browser to the IP allocated to the ESP32-S2 and click 'Configuration -> Restore Configuration'
+5. Use the file provided in this folder with the format `Config_tasmota_<version>.dmp` and click 'Start restore'
+6. Once the restoration is completed, change the Friendly Name of the device. To do it, go to 'Configuration -> Configure Other' and change the Friendly Name to `Tasmota<X>`, being `<X>` a unique value between `1` and `10`
 
 ## A. Config_tasmota_069412_5138_13.3.0.dmp
 Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 04/01/2024 with the following features:
 - Device Name (*Model* field in Home Assistant menu): `ESP32`
-- Friendly Name (*Device* field in Home Assistant menu): `Tasmota1` (please change the name to `Tasmota<X>` by using the Tasmota web installer https://tasmota.github.io/install/ or directly connecting to the ESP32-S2 via WiFi)
+- Friendly Name (*Device* field in Home Assistant menu): `Tasmota1` (please change the name to `Tasmota<X>` as previously mentioned)
 - Wifi connectivity:
   - SSID: `iot_responda`
   - Password: `<protected>`

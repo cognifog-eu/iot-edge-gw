@@ -127,7 +127,5 @@ An external OCM Manager node can be used as an Orchestrator of the deployed IoT 
 3. Then, the command for a managed cluster to join the hub is: `clusteradm join --hub-token <token> --hub-apiserver <api server url> --wait --cluster-name <cluster name> --ca-file=<server certificate .crt file>` (or a similar one provided by the hub administrator)
 4. In case the hub administrator requires a server certificate file (.crt), it must be included in the same folder where the previous command is executed (i.e., that from step #3). Further information on how to register a cluster can be found here: https://open-cluster-management.io/getting-started/installation/register-a-cluster/
 
-## F. Other
-Optionally, end devices can be configured to interact with the IoT Edge Gateway by means of the MATTER protocol. More specifically, this communication has been validated by using ESP32-S2 DevKitM-1 devices (https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) and the firmware provided by Tasmota (https://tasmota.github.io/docs/).
-
-A Tasmota pre-configured file with the configuration of Tasmota 13.1.0 for an ESP32-S2 DevKitM-1 device is provided in the `/tasmota` folder of the current repository. To flash an ESP32-S2 device with this firmware, visit its web installer: https://tasmota.github.io/install/.
+## F. MATTER-based end devices
+A first validation of the IoT Edge Gateway has been performed in combination with a set of MATTER-based ESP32-S2 devices. The firmware employed in those devices has been Tasmota (https://tasmota.github.io/docs/). More information on this setting can be found in https://github.com/cognifog-eu/iot-edge-gw/tree/main/tasmota.
