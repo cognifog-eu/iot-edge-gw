@@ -28,6 +28,7 @@ spec:
           privileged: true
       - name: home-assistant
         image: ghcr.io/home-assistant/home-assistant:stable
+        # imagePullPolicy: Always
         resources:
           requests:
             memory: "256Mi"
