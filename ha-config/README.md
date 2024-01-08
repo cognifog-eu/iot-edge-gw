@@ -18,7 +18,7 @@ Minimal configuration of Home Assistant, with the following configured capabilit
 - Deactivation of the flag 'Automatically close connection' to the server after being hidden for 5 minutes
 
 ## B. configuration.yaml
-The basic information of the Home Assistance must be included in the `configuration.yaml` file (https://www.home-assistant.io/docs/configuration/basic). Please change the fields under the `homeassistant` topic accordingly:
+The basic information of the Home Assistance must be included in the `configuration.yaml` file (https://www.home-assistant.io/docs/configuration/basic). Please change the fields under the `homeassistant` topic accordingly and replace the existing file in your Raspberry Pi:
 - name: `edge-gw-<X>` (being `X` a unique number)
 - latitude: `<latitude>`
 - longitude: `<longitude>`
