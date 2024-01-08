@@ -1,4 +1,4 @@
-# Home Assistant configuration templates
+# Home Assistant configuration
 This section includes a set of template files to preconfigure Home Assistant according to the recommendations provided in the section **Migrating to a new system** from https://www.home-assistant.io/docs/configuration/.
 For the COGNIFOG project, the configuration of Home Assistant in a fresh new IoT Edge Gateway is based on 3 steps:
 1. To apply a new basic Home Assistant configuration, copy the `.rar` file into the Raspberry Pi, unzip it, and paste it into `/home/cognifog/iot-edge-gw/ha-config`, replacing all previously existing files.
