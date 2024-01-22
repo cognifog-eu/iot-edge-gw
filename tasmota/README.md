@@ -12,7 +12,9 @@ A Tasmota pre-configured file with the configuration of Tasmota 13.3.0 for an ES
   - Android: https://play.google.com/store/apps/details?id=io.homeassistant.companion.android
   - iOS: https://apps.apple.com/us/app/home-assistant/id1099568401
 
+<p align="center">
 ![alt text](img/commissioning.png)
+</p>
 
 8. If successful, the 'Home Assistant mobile app' should display a message similar to 'Commissioning complete'
 
