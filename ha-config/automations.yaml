@@ -23,8 +23,9 @@
     data:
       qos: '0'
       retain: true
-      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
-        | replace('_humidity', '') }}/hum
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') | replace(''_humidity'',
+        '''') }}/hum'
       payload_template: '{{now().isoformat("T","milliseconds")}},{{trigger.to_state.state}}'
   mode: single
 - id: '1704371656082'
@@ -52,8 +53,9 @@
     data:
       qos: '0'
       retain: true
-      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
-        | replace('_temperature', '') }}/temp-ext
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') | replace(''_temperature'',
+        '''') }}/temp-ext'
       payload_template: '{{now().isoformat("T","milliseconds")}},{{trigger.to_state.state}}'
   mode: single
 - id: '1704373160875'
@@ -84,8 +86,9 @@
     data:
       qos: 0
       retain: true
-      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
-        | replace('_humidity', '') }}/hum/status
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') | replace(''_humidity'',
+        '''') }}/hum/status'
       payload_template: '{{now().isoformat("T","milliseconds")}},offline'
   mode: single
 - id: '1704445506900'
@@ -117,8 +120,9 @@
     data:
       qos: 0
       retain: true
-      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
-        | replace('_temperature', '') }}/temp-ext/status
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') | replace(''_temperature'',
+        '''') }}/temp-ext/status'
       payload_template: '{{now().isoformat("T","milliseconds")}},offline'
   mode: single
 - id: '1704446875187'
@@ -144,8 +148,9 @@
     data:
       qos: 0
       retain: true
-      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
-        | replace('_humidity', '') }}/hum/status
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') | replace(''_humidity'',
+        '''') }}/hum/status'
       payload_template: '{{now().isoformat("T","milliseconds")}},online'
   mode: single
 - id: '1704447193665'
@@ -172,8 +177,9 @@
     data:
       qos: 0
       retain: true
-      topic_template: esp32s2/{{ trigger.entity_id | replace('sensor.tasmota', '')
-        | replace('_temperature', '') }}/temp-ext/status
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') | replace(''_temperature'',
+        '''') }}/temp-ext/status'
       payload_template: '{{now().isoformat("T","milliseconds")}},online'
   mode: single
 - id: '1704453446805'
@@ -194,14 +200,9 @@
     data:
       qos: 0
       retain: true
-      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/attributes/latitude'
-      payload_template: '{{state_attr(''zone.home'',''latitude'')}}'
-  - service: mqtt.publish
-    data:
-      qos: 0
-      retain: true
-      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/attributes/longitude'
-      payload_template: '{{state_attr(''zone.home'',''longitude'')}}'
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/attributes/location'
+      payload_template: '{"latitude": {{state_attr("zone.home","latitude")}}, "longitude":
+        {{state_attr("zone.home","longitude")}}}'
   mode: single
 - id: '1704453676134'
   alias: AUT_HA_off
