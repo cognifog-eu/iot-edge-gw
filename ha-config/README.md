@@ -28,7 +28,7 @@ The basic information of the Home Assistance must be included in the `configurat
 ## C. automations.yaml
 The current version of the `automations.yaml` in this repository includes the following automations, with their corresponding MQTT topics and data fields:
 - **AUT_hum**: Forward humidity value to MQTT broker
-  - <edge_gw_id>/esp32s2/<device_id>/hum &rarr <timestamp_gw>,<humidity_value>
+  - <edge_gw_id>/esp32s2/<device_id>/hum &rarr; <timestamp_gw>,<humidity_value>
 - **AUT_temp_ext**: Forward (external) temperature value to MQTT broker
   - <edge_gw_id>/esp32s2/<device_id>/temp-ext --> <timestamp_gw>,<temperature_value>
 - **AUT_hum_unav**: Forward unavailability of the humidity sensor to the MQTT broker
