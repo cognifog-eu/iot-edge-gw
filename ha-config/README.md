@@ -28,19 +28,19 @@ The basic information of the Home Assistance must be included in the `configurat
 ## C. automations.yaml
 The current version of the `automations.yaml` in this repository includes the following automations, with their corresponding MQTT topics and data fields:
 - **AUT_hum**: Forward humidity value to MQTT broker
-  - <edge_gw_id>/esp32s2/<device_id>/hum --> <timestamp>,<humidity_value>
+  - <edge_gw_id>/esp32s2/<device_id>/hum --> <timestamp_gw>,<humidity_value>
 - **AUT_temp_ext**: Forward (external) temperature value to MQTT broker
-  - <edge_gw_id>/esp32s2/<device_id>/temp-ext --> <timestamp>,<temperature_value>
+  - <edge_gw_id>/esp32s2/<device_id>/temp-ext --> <timestamp_gw>,<temperature_value>
 - **AUT_hum_unav**: Forward unavailability of the humidity sensor to the MQTT broker
-  - <edge_gw_id>/esp32s2/<device_id>/hum/status --> <timestamp>,offline
+  - <edge_gw_id>/esp32s2/<device_id>/hum/status --> <timestamp_gw>,offline
 - **AUT_temp_ext_unav**: Forward unavailability of the (external) temperature sensor to the MQTT broker
-  - <edge_gw_id>/esp32s2/<device_id>/temp-ext/status --> <timestamp>,offline
+  - <edge_gw_id>/esp32s2/<device_id>/temp-ext/status --> <timestamp_gw>,offline
 - **AUT_hum_av**: Forward availability of the humidity sensor to the MQTT broker
-  - <edge_gw_id>/esp32s2/<device_id>/hum/status --> <timestamp>,online
+  - <edge_gw_id>/esp32s2/<device_id>/hum/status --> <timestamp_gw>,online
 - **AUT_temp_ext_av**: Forward availability of the (external) temperature sensor to the MQTT broker
-  - <edge_gw_id>/esp32s2/<device_id>/temp-ext/status --> <timestamp>,online
+  - <edge_gw_id>/esp32s2/<device_id>/temp-ext/status --> <timestamp_gw>,online
 - **AUT_HA_on**: Notify availability of the IoT Edge GW to the MQTT broker
-  - <edge_gw_id>/status --> <timestamp>,online
+  - <edge_gw_id>/status --> <timestamp_gw>,online
   - <edge_gw_id>/attributes/location --> {"latitude": <latitude>, "longitude": <longitude>}
 - **AUT_HA_off**: Notify unavailability of the IoT Edge GW to the MQTT broker 
-  - <edge_gw_id>/status --> <timestamp>,offline
+  - <edge_gw_id>/status --> <timestamp_gw>,offline
