@@ -31,14 +31,14 @@ The current version of the `automations.yaml` in this repository includes the fo
   - <edge_gw_id>/esp32s2/<device_id>/hum &rarr; <timestamp_gw>,<humidity_value>
 - **AUT_temp_ext**: Forward (external) temperature value to MQTT broker
   - <edge_gw_id>/esp32s2/<device_id>/temp-ext &rarr; <timestamp_gw>,<temperature_value>
-- **AUT_hum_unav**: Forward unavailability of the humidity sensor to the MQTT broker
-  - <edge_gw_id>/esp32s2/<device_id>/hum/status &rarr; <timestamp_gw>,offline
-- **AUT_temp_ext_unav**: Forward unavailability of the (external) temperature sensor to the MQTT broker
-  - <edge_gw_id>/esp32s2/<device_id>/temp-ext/status &rarr; <timestamp_gw>,offline
 - **AUT_hum_av**: Forward availability of the humidity sensor to the MQTT broker
   - <edge_gw_id>/esp32s2/<device_id>/hum/status &rarr; <timestamp_gw>,online
 - **AUT_temp_ext_av**: Forward availability of the (external) temperature sensor to the MQTT broker
   - <edge_gw_id>/esp32s2/<device_id>/temp-ext/status &rarr; <timestamp_gw>,online
+- **AUT_hum_unav**: Forward unavailability of the humidity sensor to the MQTT broker
+  - <edge_gw_id>/esp32s2/<device_id>/hum/status &rarr; <timestamp_gw>,offline
+- **AUT_temp_ext_unav**: Forward unavailability of the (external) temperature sensor to the MQTT broker
+  - <edge_gw_id>/esp32s2/<device_id>/temp-ext/status &rarr; <timestamp_gw>,offline
 - **AUT_HA_on**: Notify availability of the IoT Edge GW to the MQTT broker
   - <edge_gw_id>/status &rarr; <timestamp_gw>,online
   - <edge_gw_id>/attributes/location &rarr; {"latitude": <latitude>, "longitude": <longitude>}
