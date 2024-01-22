@@ -41,6 +41,6 @@ The current version of the `automations.yaml` in this repository includes the fo
   - <edge_gw_id>/esp32s2/<device_id>/temp-ext/status &rarr; <timestamp_gw>,offline
 - **AUT_HA_on**: Notify availability of the IoT Edge GW to the MQTT broker
   - <edge_gw_id>/status &rarr; <timestamp_gw>,online
-  - <edge_gw_id>/attributes/location &rarr; {"latitude": <latitude>, "longitude": <longitude>}
+  - <edge_gw_id>/attributes/location &rarr; {"latitude": <latitude_gw>, "longitude": <longitude_gw>}
 - **AUT_HA_off**: Notify unavailability of the IoT Edge GW to the MQTT broker 
   - <edge_gw_id>/status &rarr; <timestamp_gw>,offline
