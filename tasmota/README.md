@@ -12,11 +12,9 @@ A Tasmota pre-configured file with the configuration of Tasmota 13.3.0 for an ES
   - Android: https://play.google.com/store/apps/details?id=io.homeassistant.companion.android
   - iOS: https://apps.apple.com/us/app/home-assistant/id1099568401
 
-<p align="center">
-![alt text](img/commissioning.png)
-</p>
+<center>![alt text](img/commissioning.png)</center>
 
-8. If successful, the 'Home Assistant mobile app' should display a message similar to 'Commissioning complete'
+1. If successful, the 'Home Assistant mobile app' should display a message similar to 'Commissioning complete'
 
 ## A. Config_tasmota_069412_5138_13.3.0.dmp
 Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 04/01/2024 with the following features:
