@@ -27,7 +27,9 @@ The current version of the `automations.yaml` in this repository includes the fo
 
 | Topic                                                       | Description             | Expected data            | Example |
 |-------------------------------------------------------------|-------------------------|--------------------------|---------|
-| <edge_gw_id>/<device_type>/<device_id>/<sensor_type>        | Sensor data publication | *_Not used_*             |
+| **<edge_gw_id>/<device_type>/<device_id>/<sensor_type>**    | Sensor data publication | *_Not used_*             |         |
+| <edge_gw_id>: ID of the IoT Edge GW                         |
+|-------------------------------------------------------------|-------------------------|--------------------------|---------|
 | <edge_gw_id>/<device_type>/<device_id>/<sensor_type>/status | Sensor status           | AM2301#Temperature       |
 | <edge_gw_id>/status                                         | Edge GW status          | AM2301#Humidity          |
 | <edge_gw_id>/attributes/<attribute_type>                    | Edge GW attributes      |                          |
