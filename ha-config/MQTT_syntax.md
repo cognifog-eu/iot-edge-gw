@@ -40,3 +40,7 @@ The current version of the `automations.yaml` in this repository includes the fo
 |                         | <device_type>: Type of device                        | esp32s2             |
 |                         | <device_id>: ID of the end device                    | (Integer)           |
 |                         | <sensor_type>: Type of sensor                        | hum, temp-ext       |
+
+| **Description**             | **Topic**                                                                         | **Data**                                                             |
+|-----------------------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| **Sensor data publication** | <edge_gw_id>/<device_type>/<device_id>/<sensor_type> Ex: edge-gw-1/esp32s2/1/hum  | <timestamp_gw>,<sensor_value> Ex: 2024-01-22T18:13:30.594+01:00,45.9 |
