@@ -41,6 +41,10 @@ The current version of the `automations.yaml` in this repository includes the fo
 |                         | <device_id>: ID of the end device                    | (Integer)           |
 |                         | <sensor_type>: Type of sensor                        | hum, temp-ext       |
 
-| **Description**             | **Topic**                                                                         | **Data**                                                             |
-|-----------------------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| **Sensor data publication** | <edge_gw_id>/<device_type>/<device_id>/<sensor_type><br>Ex: edge-gw-1/esp32s2/1/hum  | <timestamp_gw>,<sensor_value><br>Ex: 2024-01-22T18:13:30.594+01:00,45.9 |
+
+| **MQTT method**             | **Topic**                                                                                         | **Data**                                                                |
+|-----------------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| **Sensor data publication** | <edge_gw_id>/<device_type>/<device_id>/<sensor_type><br>Ex: edge-gw-1/esp32s2/1/hum               | <timestamp_gw>,<sensor_value><br>Ex: 2024-01-22T18:13:30.594+01:00,45.9 |
+| **Sensor status**           | <edge_gw_id>/<device_type>/<device_id>/<sensor_type>/status<br>Ex: edge-gw-1/esp32s2/1/hum/status | <timestamp_gw>,<status><br>Ex: 2024-01-22T18:15:40.067+01:00,offline    |
+| **Edge GW status**          | <edge_gw_id>/status<br>Ex: edge-gw-1/status                                                       | <timestamp_gw>,<status><br>Ex: 2024-01-24T13:35:00.051+01:00,online     |
+| **Edge GW attributes**      | <edge_gw_id>/attributes/<attribute_type>                                                          | {"attribute1": <attribute1_value>, "attribute2": <attribute2_value>}    |
