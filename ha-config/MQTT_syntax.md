@@ -29,7 +29,14 @@ The current version of the `automations.yaml` in this repository includes the fo
 |-------------------------------------------------------------|-------------------------|--------------------------|---------|
 | **<edge_gw_id>/<device_type>/<device_id>/<sensor_type>**    | Sensor data publication | *_Not used_*             |         |
 | <edge_gw_id>: ID of the IoT Edge GW                         |                         |                          |         |
-|-------------------------------------------------------------|-------------------------|--------------------------|---------|
 | <edge_gw_id>/<device_type>/<device_id>/<sensor_type>/status | Sensor status           | AM2301#Temperature       |         |
 | <edge_gw_id>/status                                         | Edge GW status          | AM2301#Humidity          |         |
 | <edge_gw_id>/attributes/<attribute_type>                    | Edge GW attributes      |                          |         |
+
+| **Description**         | **MQTT topic / field**                               | **Possible values** |
+|-------------------------|------------------------------------------------------|---------------------|
+| Sensor data publication | <edge_gw_id>/<device_type>/<device_id>/<sensor_type> |                     |
+|                         | <edge_gw_id>: ID of the IoT Edge GW                  | (Integer)           |
+|                         | <device_type>: Type of device                        | esp32s2             |
+|                         | <device_id>: ID of the end device                    | (Integer)           |
+|                         | <sensor_type>: Type of sensor                        | hum, temp-ext       |
