@@ -71,24 +71,22 @@ Then, go to “Localisation Options” > “WLAN country” and select your coun
 
 Start by enabling the Wi-Fi interface in Network Manager with:
 
-`sudo nmcli con add con-name hotspot ifname wlan0 type wifi ssid "cognifog_wifi" autoconnect true`
+`sudo nmcli device wifi hotspot ifname wlan0 band bg ssid cognifog_wifi password raspberry`
 
 You can replace "cognifog_wifi" with your own SSID of choice, that will be the access point Wi-Fi name.
-You can also replace “hotspot” with anything else, it’s the configuration name. Just make sure to also change it in the next commands.
-
-We’ll then set the access point security and password, for example:
-```
-sudo nmcli con modify hotspot wifi-sec.key-mgmt wpa-psk
-sudo nmcli con modify hotspot wifi-sec.psk "raspberry"
-```
-
 The last parameter (i.e., "raspberry") is your Wi-Fi password, make sure to use something more complicated.
 
 And finally, configure Network Manager to run in access point mode, with shared IP addresses on this interface:
 
-`sudo nmcli con modify hotspot 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared ipv4.address 192.168.6.1/24`
+`sudo nmcli con modify Hotspot connection.autoconnect yes 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared ipv4.address 192.168.6.1/24`
 
 The last parameter corresponds to the IP (i.e., 192.168.6.1) of the Raspberry Pi within the created network and the network mask (i.e., /24). 
+
+Lastly, it is necessary to turn down and then turn up the Hotspot to apply the configuration:
+```
+sudo nmcli con down Hotspot
+sudo nmcli con up Hotspot
+```
 
 Once the AP is setup, you can also use “nmtui” to edit your settings, like upgrading the security, for example. In there, you can see and edit your configuration easily, without having to find all the commands parameters. Here is the command to open this tool:
 
@@ -104,13 +102,7 @@ journalctl | grep hotspot
 journalctl | grep wifi
 ```
 
-Although the AP should be started when the Raspberry Pi powers up (`autoconnect true` was used in the aforementioned configuration), you can alwayus turn up/down the AP with the following commands: 
-
-Turn up AP: `sudo nmcli con up hotspot`
-
-Turn down AP: `sudo nmcli con down hotspot`
-
-(Further information on the **A.2. Optional: Configuring a Raspberry Pi as a WiFi Access Point** step can be found in the following link: https://raspberrytips.com/access-point-setup-raspberry-pi/)
+(Further information on the **A.2. Optional: Configuring a Raspberry Pi as a WiFi Access Point** step can be found in the following links: https://raspberrytips.com/access-point-setup-raspberry-pi/ and https://www.baeldung.com/linux/nmcli-wap-sharing-internet)
 
 ## B. K3S installation
 The first thing to do is to update and upgrade your Raspberry:
