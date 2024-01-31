@@ -53,7 +53,9 @@ From now on, every time the system starts/reboots, the script file will execute 
 (Further information on the **A.1. Optional: WiFi permanent connection** step can be found in **Method 1** section of the following link: https://itslinuxfoss.com/run-script-startup-ubuntu/)
 
 ### A.2. Optional: Configuring a Raspberry Pi as a WiFi Access Point
-**This setup requires a Raspberry Pi using Debian GNU/Linux 12 (bookworm)**
+**This setup requires a Raspberry Pi using Debian GNU/Linux 12 (bookworm).**
+
+**This setup also requires that the Raspberry Pi's WiFi interface is not used for Internet access. Instead, the Raspberry Pi should be connected to the Internet via its Ethernet interface.**
 
 The first thing to do is to update and upgrade your Raspberry:
 ```
