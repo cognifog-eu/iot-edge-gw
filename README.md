@@ -52,10 +52,45 @@ From now on, every time the system starts/reboots, the script file will execute 
 
 (Further information of the **A.1. Optional: WiFi permanent connection** step can be found in **Method 1** section of the following link: https://itslinuxfoss.com/run-script-startup-ubuntu/)
 
+### A.2. Optional: Configuring a Raspberry Pi as a WiFi Access Point
+**This setup requires a Raspberry Pi using Debian GNU/Linux 12 (bookworm)**
+
+The first thing to do is to update and upgrade your Raspberry:
+```
+sudo apt update
+sudo apt upgrade
+```
+
+If you are using a fresh new Raspberry Pi OS, you might need to set a Wi-Fi country first. Open raspi-config with this command:
+`sudo raspi-config`
+
+Then, go to “Localisation Options” > “WLAN country” and select your country from the list. Confirm and exit. From there on, the Wi-Fi interface will be enabled.
+
+Start by enabling the Wi-Fi interface in Network Manager with:
+`sudo nmcli con add con-name hotspot ifname wlan0 type wifi ssid "cognifog_wifi" autoconnect true`
+
+You can replace "cognifog_wifi" with your own SSID of choice, that will be the access point Wi-Fi name.
+You can also replace “hotspot” with anything else, it’s the configuration name. Just make sure to also change it in the next commands.
+
+We’ll then set the access point security and password, for example:
+```
+sudo nmcli con modify hotspot wifi-sec.key-mgmt wpa-psk
+sudo nmcli con modify hotspot wifi-sec.psk "raspberry"
+```
+
+The last parameter (i.e., "raspberry") is your Wi-Fi password, make sure to use something more complicated.
+
+And finally, configure Network Manager to run in access point mode, with shared IP addresses on this interface:
+`sudo nmcli con modify hotspot 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared ipv4.address 192.168.6.1/24`
+
+The last parameter corresponds to the IP (i.e., 192.168.6.1) of the Raspberry Pi within the created network and the network mask (i.e., /24). 
+
 ## B. K3S installation
 The first thing to do is to update and upgrade your Raspberry:
-1. `sudo apt update`
-2. `sudo apt upgrade`
+```
+sudo apt update
+sudo apt upgrade
+```
 
 Then, in file `/boot/cmdline.txt` add `cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1` to the end of the existing line (do not add it as a new line!!) and reboot the Raspberry Pi:
 `sudo nano /boot/cmdline.txt`
