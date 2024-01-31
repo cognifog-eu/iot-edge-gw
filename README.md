@@ -88,6 +88,20 @@ And finally, configure Network Manager to run in access point mode, with shared 
 
 The last parameter corresponds to the IP (i.e., 192.168.6.1) of the Raspberry Pi within the created network and the network mask (i.e., /24). 
 
+Once the AP is setup, you can also use “nmtui” to edit your settings, like upgrading the security, for example. In there, you can see and edit your configuration easily, without having to find all the commands parameters. Here is the command to open this tool:
+
+`sudo nmtui`
+
+If you experience any issue, check the logs with:
+
+`journalctl`
+
+You can use grep to filter the output:
+```
+journalctl | grep hotspot
+journalctl | grep wifi
+```
+
 (Further information on the **A.2. Optional: Configuring a Raspberry Pi as a WiFi Access Point** step can be found in the following link: https://raspberrytips.com/access-point-setup-raspberry-pi/)
 
 ## B. K3S installation
