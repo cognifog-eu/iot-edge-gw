@@ -52,7 +52,7 @@ From now on, every time the system starts/reboots, the script file will execute 
 
 (Further information on the **A.1. Optional: WiFi permanent connection** step can be found in **Method 1** section of the following link: https://itslinuxfoss.com/run-script-startup-ubuntu/)
 
-### A.2. Optional: Configuring a Raspberry Pi as a WiFi Access Point
+### A.2. Optional: Configuring a Raspberry Pi as a WiFi Access Point at 2.4 GHz
 **This setup requires a Raspberry Pi using Debian GNU/Linux 12 (bookworm).**
 
 **This setup also requires that the Raspberry Pi's WiFi interface is not used for Internet access. Instead, the Raspberry Pi should be connected to the Internet via its Ethernet interface.**
@@ -74,7 +74,7 @@ Start by enabling the Wi-Fi interface in Network Manager with:
 `sudo nmcli device wifi hotspot ifname wlan0 band bg ssid cognifog_wifi password raspberry`
 
 You can replace "cognifog_wifi" with your own SSID of choice, that will be the access point Wi-Fi name.
-The last parameter (i.e., "raspberry") is your Wi-Fi password, make sure to use something more complicated.
+The last parameter (i.e., "raspberry") is your WiFi WPA2-based password, make sure to use something more complicated.
 
 Next, configure Network Manager to run in access point mode, with shared IP addresses on this interface:
 
