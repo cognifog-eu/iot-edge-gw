@@ -104,9 +104,9 @@ journalctl | grep wifi
 
 Although the AP should be started when the Raspberry Pi powers up (`autoconnect true` was used in the aforementioned configuration), you can alwayus turn up/down the AP with the following commands: 
 
-Turn up: `sudo nmcli con up hotspot`
+Turn up AP: `sudo nmcli con up hotspot`
 
-Turn down: `sudo nmcli con down hotspot`
+Turn down AP: `sudo nmcli con down hotspot`
 
 (Further information on the **A.2. Optional: Configuring a Raspberry Pi as a WiFi Access Point** step can be found in the following link: https://raspberrytips.com/access-point-setup-raspberry-pi/)
 
