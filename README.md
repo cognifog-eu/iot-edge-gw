@@ -76,7 +76,7 @@ Start by enabling the Wi-Fi interface in Network Manager with:
 You can replace "cognifog_wifi" with your own SSID of choice, that will be the access point Wi-Fi name.
 The last parameter (i.e., "raspberry") is your Wi-Fi password, make sure to use something more complicated.
 
-And finally, configure Network Manager to run in access point mode, with shared IP addresses on this interface:
+Next, configure Network Manager to run in access point mode, with shared IP addresses on this interface:
 
 `sudo nmcli con modify Hotspot connection.autoconnect yes 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared ipv4.address 192.168.6.1/24`
 
@@ -92,7 +92,11 @@ Once the AP is setup, you can also use “nmtui” to edit your settings, like u
 
 `sudo nmtui`
 
-If you experience any issue, check the logs with:
+If you experience any issue, you can check the state of the connections with:
+
+`sudo nmcli con show`
+
+Alternatively, you can check the logs with:
 
 `journalctl`
 
