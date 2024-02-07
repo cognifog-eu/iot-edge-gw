@@ -69,11 +69,11 @@ If you are using a fresh new Raspberry Pi OS, you might need to set a Wi-Fi coun
 
 Then, go to “Localisation Options” > “WLAN country” and select your country from the list. Confirm and exit. From there on, the Wi-Fi interface will be enabled.
 
-Start by enabling the Wi-Fi interface in Network Manager with:
+Start by enabling the WiFi interface in Network Manager with:
 
 `sudo nmcli device wifi hotspot ifname wlan0 band bg ssid cognifog_wifi password <password>`
 
-You can replace "cognifog_wifi" with your own SSID of choice; that will be the access point Wi-Fi name.
+By default, `cognifog_wifi` is the SSID of the resulting WiFi network, but it can be changed by any other SSID name.
 The last parameter (i.e., `<password>`) corresponds to the WiFi WPA2-based password.
 
 Next, configure Network Manager to run in access point mode, with shared IP addresses on this interface:
