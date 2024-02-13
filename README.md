@@ -140,7 +140,8 @@ The current version of the IoT Edge Gateway consists of a set of applications sp
 - **MATTER controller add-on for Home Assistant**: Plug-in for Home Assistant to control MATTER-based end devices running over WiFi (https://www.home-assistant.io/integrations/matter/)
   - `matter-server-deploy.yaml`: Matter Server deployment file (`4.0.2` release, validated at 02/01/2024 and `5.5.3` release, validated at 13/02/2024)
   - `matter-server-service.yaml`: Matter Server service file
-- **(Optional) Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
+- **Mosquitto MQTT broker**: Open-source message broker that implements the MQTT protocol. It can be installed in the Raspberry Pi by following the steps from https://github.com/cognifog-eu/mqtt-broker.
+- **Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
   - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
 
 By default, the deployment files of the **Home Assistant** (i.e., `home-assistant-deploy.yaml`) and the **Matter controller add-on** (i.e., `matter-server-deploy.yaml`) require the existence of some folders in the Raspberry Pi to store the corresponding configuration files:
@@ -178,9 +179,9 @@ Unfortunately, at 02/01/2024, the MQTT client for Home Assistant can only be con
 5. Fill the requested fields: i.e., broker, port, username, and password
 
 ### D.4. Mosquitto MQTT broker
-The Mosquitto MQTT broker container can be installed in the Raspberry Pi by following the steps from https://github.com/cognifog-eu/mqtt-broker. 
+The configuration of the Mosquitto MQTT broker is described in https://github.com/cognifog-eu/mqtt-broker. 
 
-### D.5. (Optional) Portainer
+### D.5. Portainer
 Once installed, the Portainer instance will be deployed into your local cluster in a few moments. Navigate to `http://[IP_ADDRESS]:30777` and you will see the home page where we need to set a new password. Add this and hit next.
 
 The following message may appear if Portainer is not configured just after its deployment: `Your Portainer instance timed out for security purposes. To re-enable your Portainer instance, you will need to restart Portainer.` In that case, it will be necessary to restart the Portainer deployment by typing: `kubectl rollout restart deployment portainer -n portainer`.
