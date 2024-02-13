@@ -135,10 +135,10 @@ And that’s it! You have a Kubernetes cluster running! You can check it with th
 ## C. Installation of the IoT Edge Gateway manifest files
 The current version of the IoT Edge Gateway consists of a set of applications split into different files (YAML manifests) to be deployed by using K3S. All of them are available in the `/manifests` folder of this repository:
 - **Home Assistant**: Open-source home automation platform that allows users to control and manage various smart devices and services (https://www.home-assistant.io/)
-  - `home-assistant-deploy.yaml`: Home Assistant deployment file (`stable` release, validated at 02/01/2024 for 2023.12.4 version)
+  - `home-assistant-deploy.yaml`: Home Assistant deployment file (`stable` release, validated at 13/02/2024 for 2024.2.1 version)
   - `home-assistant-service.yaml`: Home Assistant service file
 - **MATTER controller add-on for Home Assistant**: Plug-in for Home Assistant to control MATTER-based end devices running over WiFi (https://www.home-assistant.io/integrations/matter/)
-  - `matter-server-deploy.yaml`: Matter Server deployment file (`4.0.2` release, validated at 02/01/2024)
+  - `matter-server-deploy.yaml`: Matter Server deployment file (`4.0.2` release, validated at 02/01/2024 and `5.5.3` release, validated at 13/02/2024)
   - `matter-server-service.yaml`: Matter Server service file
 - **(Optional) Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
   - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
@@ -154,7 +154,7 @@ Lastly, to install all applications, copy all files from the `/manifests` folder
 Check that all services are properly deployed by running:
 `kubectl get pods -A`
 
-(Note that the installation of **Home Assistant** and the **Matter controller add-on** can be very slow due to the size of both images: 1.7 GB and 394 MB, respectively, in versions employed at 02/01/2024)
+(Note that the installation of **Home Assistant** and the **Matter controller add-on** can be very slow due to the size of both images: 1.7 GB and 394 MB, respectively, in versions employed at 02/01/2024. For this reason, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface.)
 
 ## D. Configuration
 ### D.1. Home Assistant
@@ -177,7 +177,10 @@ Unfortunately, at 02/01/2024, the MQTT client for Home Assistant can only be con
 4. Click 'MQTT'
 5. Fill the requested fields: i.e., broker, port, username, and password
 
-### D.4. (Optional) Portainer
+### D.4. Mosquitto MQTT broker
+The Mosquitto MQTT broker container can be installed in the Raspberry Pi by following the steps from https://github.com/cognifog-eu/mqtt-broker. 
+
+### D.5. (Optional) Portainer
 Once installed, the Portainer instance will be deployed into your local cluster in a few moments. Navigate to `http://[IP_ADDRESS]:30777` and you will see the home page where we need to set a new password. Add this and hit next.
 
 The following message may appear if Portainer is not configured just after its deployment: `Your Portainer instance timed out for security purposes. To re-enable your Portainer instance, you will need to restart Portainer.` In that case, it will be necessary to restart the Portainer deployment by typing: `kubectl rollout restart deployment portainer -n portainer`.
