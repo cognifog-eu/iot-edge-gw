@@ -140,7 +140,8 @@ The current version of the IoT Edge Gateway consists of a set of applications sp
 - **MATTER controller add-on for Home Assistant**: Plug-in for Home Assistant to control MATTER-based end devices running over WiFi (https://www.home-assistant.io/integrations/matter/)
   - `matter-server-deploy.yaml`: Matter Server deployment file (`4.0.2` release, validated at 02/01/2024 and `5.5.3` release, validated at 13/02/2024)
   - `matter-server-service.yaml`: Matter Server service file
-- **Mosquitto MQTT broker**: Open-source message broker that implements the MQTT protocol (https://mosquitto.org/). It can be installed in the Raspberry Pi by following the steps from https://github.com/cognifog-eu/mqtt-broker.
+- **Mosquitto MQTT broker**: Open-source message broker that implements the MQTT protocol (https://mosquitto.org/). 
+  - It can be installed in the Raspberry Pi by following the steps from https://github.com/cognifog-eu/mqtt-broker.
 - **Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
   - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
 
