@@ -106,7 +106,13 @@ journalctl | grep hotspot
 journalctl | grep wifi
 ```
 
+Lastly, it is possible to list the connected devices to the WiFi Access Point by executing:
+
+`sudo arp | sort` and looking for those IP addresses connected to the wlan0 interface.
+
 (Further information on the **A.2. Optional: Configuring a Raspberry Pi as a WiFi Access Point** step can be found in the following links: https://raspberrytips.com/access-point-setup-raspberry-pi/ and https://www.baeldung.com/linux/nmcli-wap-sharing-internet)
+
+(For more advanced tools to list the connected devices on a WiFi Access Point, check https://www.baeldung.com/linux/list-devices-wireless-access-point)
 
 ## B. K3S installation
 The first thing to do is to update and upgrade your Raspberry:
