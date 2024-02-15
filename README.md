@@ -132,8 +132,8 @@ And that’s it! You have a Kubernetes cluster running! You can check it with th
 
 (A comprehensive description of **B. K3S installation** step can be found at https://www.padok.fr/en/blog/raspberry-kubernetes. In addition, here is the official rancher documentation to install k3s: https://docs.k3s.io/quick-start)
 
-## C. Installation of the IoT Edge Gateway manifest files
-The current version of the IoT Edge Gateway consists of a set of applications split into different files (YAML manifests) to be deployed by using K3S. All of them are available in the `/manifests` folder of this repository:
+## C. IoT Edge Gateway toolkit
+The IoT Edge Gateway can be populated with a toolkit of open-source applications, which are deployed via K3S. The corresponding deployment files (YAML manifests) of each application are available in the `/manifests` folder of this repository:
 - **Home Assistant**: Open-source home automation platform that allows users to control and manage various smart devices and services (https://www.home-assistant.io/)
   - `home-assistant-deploy.yaml`: Home Assistant deployment file (`stable` release, validated at 13/02/2024 for 2024.2.1 version)
   - `home-assistant-service.yaml`: Home Assistant service file
@@ -144,17 +144,25 @@ The current version of the IoT Edge Gateway consists of a set of applications sp
   - It can be installed in the Raspberry Pi by following the steps from https://github.com/cognifog-eu/mqtt-broker.
 - **Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
   - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
+- **iPerf3**: iPerf3 is an open-source tool for active measurements of the maximum achievable bandwidth on IP networks. It supports tuning of various parameters related to timing, buffers and protocols (TCP, UDP, SCTP with IPv4 and IPv6). For each test it reports the bandwidth, loss, and other parameters (https://iperf.fr/). To use iPerf3 it is necessary to install it in two machines; one acting as a server and the other as a client. Once iPerf3 is installed, the machine can be configured to act as a server or as a client.  
+  - **iPerf3 server**: To be installed in a machine with an x86-64 architecture:
+    - `iperf3-server-deploy.yaml`: iPerf3 server deployment file
+    - `iperf3-server-service.yaml`: iPerf3 server service file
+  - **iPerf3 client**: To be installed in a machine with an ARM64 architecture:
+    - `iperf3-client-deploy.yaml`: iPerf3 client deployment file
+    - `iperf3-client-service.yaml`: iPerf3 client service file
 
+To install an application, copy all its files from the corresponding `/manifests` folder of this repository into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
+
+Check that services are properly deployed by running:
+`kubectl get pods -A`
+
+### C.1. Considerations on the installation of Home Assistant and the Matter controller add-on
 By default, the deployment files of the **Home Assistant** (i.e., `home-assistant-deploy.yaml`) and the **Matter controller add-on** (i.e., `matter-server-deploy.yaml`) require the existence of some folders in the Raspberry Pi to store the corresponding configuration files:
   - Home Assistant: `/home/cognifog/iot-edge-gw/ha-config`
   - Matter controller add-on: `/home/cognifog/iot-edge-gw/matter-server-config`
 
 The creation of these folders can be automatized by executing the script `CreateFolders.sh`, included in the `/scripts` folder of this repository. Just copy the `CreateFolders.sh` file into the Raspberry Pi and execute `bash CreateFolders.sh`. Alternatively, the user can create different folders as long as they match the definition of the previous deployment files.
-
-Lastly, to install all applications, copy all files from the `/manifests` folder of this repository into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
-
-Check that all services are properly deployed by running:
-`kubectl get pods -A`
 
 (Note that the installation of **Home Assistant** and the **Matter controller add-on** can be very slow due to the size of both images: 1.7 GB and 394 MB, respectively, in versions employed at 02/01/2024. For this reason, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface.)
 
@@ -186,6 +194,18 @@ The configuration of the Mosquitto MQTT broker is described in https://github.co
 Once installed, the Portainer instance will be deployed into your local cluster in a few moments. Navigate to `http://[IP_ADDRESS]:30777` and you will see the home page where we need to set a new password. Add this and hit next.
 
 The following message may appear if Portainer is not configured just after its deployment: `Your Portainer instance timed out for security purposes. To re-enable your Portainer instance, you will need to restart Portainer.` In that case, it will be necessary to restart the Portainer deployment by typing: `kubectl rollout restart deployment portainer -n portainer`.
+
+### D.6. iPerf3
+Once iPerf3 is installed in two different nodes (one acting as a server and the other as a client), it is necessary to get a shell to the pod running iPerf3 in each case by running the following command:
+`kubectl exec -it <pod_name> -n <iperf3-server / iperf3-client> -- sh`, where `<pod_name>` corresponds to the name of the pod.
+
+Once inside the corresponding pods, run the following commands in each case:
+  - **iPerf3 server**:
+    - `iperf3 -s`: It configures the iPerf3 instance as a server
+  - **iPerf3 client**: 
+    - `iperf3 -c <server-pod-IP>`: It configures the iPerf3 instance as a client and starts the communication with the server
+
+(Further informartion on the iPerf3 commands can be found in https://iperf.fr/iperf-doc.php)
 
 ## E. Integration with OCM
 An external OCM Manager node can be used as an Orchestrator of the deployed IoT Edge Gateway(s). To connect the IoT Edge Gateway(s) to that system it is necessary to follow these steps:

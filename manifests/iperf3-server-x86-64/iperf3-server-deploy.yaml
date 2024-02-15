@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: iperf3-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: iperf3-server
+  name: iperf3-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iperf3-server
+  template:
+    metadata:
+      labels:
+        app: iperf3-server
+    spec:
+      containers:
+        - name: iperf3-server
+          image: leodotcloud/swiss-army-knife
+          ports:
+            - containerPort: 5201
+      hostNetwork: true

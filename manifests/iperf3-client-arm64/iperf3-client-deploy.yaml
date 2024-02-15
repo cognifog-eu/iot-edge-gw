@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: iperf3-client
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: iperf3-client
+  name: iperf3-client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iperf3-client
+  template:
+    metadata:
+      labels:
+        app: iperf3-client
+    spec:
+      containers:
+        - name: iperf3-client
+          image: cpcontainer/iperf3
+          ports:
+            - containerPort: 5201
+      hostNetwork: true
