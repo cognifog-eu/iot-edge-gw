@@ -4,7 +4,7 @@ This manual includes all the steps and source code corresponding to the installa
 ## A. Prerequisites
 The IoT Edge Gateway has been validated in the following platform:
 - **HW**: Raspberry Pi 4B (4GB RAM and 32GB SD card)
-- **OS**: Debian GNU/Linux 11 (bullseye) and Debian GNU/Linux 12 (bookworm). These Linux-based OS distributions can be found in the Raspberry Pi Imager (https://www.raspberrypi.com/software/) under the name `Raspberry Pi OS Lite (64-bit)`. 
+- **OS**: Debian GNU/Linux 11 (bullseye) and Debian GNU/Linux 12 (bookworm). These Linux-based OS distributions can be found in the Raspberry Pi Imager (https://www.raspberrypi.com/software/) under the name `Raspberry Pi OS Lite (64-bit)`. Alternatively, if using the embedded version of ARCA Trusted OS, we refer the reader to 
 - **SW**: Lightweight Kubernetes K3S (https://k3s.io/)
 
 (This manual has been created purposely for a Raspberry Pi with `cognifog` as hostname).
