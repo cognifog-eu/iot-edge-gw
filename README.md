@@ -145,11 +145,11 @@ The IoT Edge Gateway can be populated with a toolkit of open-source applications
 - **Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
   - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
 - **iPerf3**: iPerf3 is an open-source tool for active measurements of the maximum achievable bandwidth on IP networks. It supports tuning of various parameters related to timing, buffers and protocols (TCP, UDP, SCTP with IPv4 and IPv6). For each test it reports the bandwidth, loss, and other parameters (https://iperf.fr/).  
-  To use iPerf3 it is necessary to install it in two machines; one acting as a server and the other as a client. Once iPerf3 is installed, the machine can be configured to act as a server or as a client.  
-  - **iPerf3 server**: To be installed in a machine with an x86-64 architecture:
+  To utilize iPerf3, it must be installed on two machines: one serving as a server and the other as a client. In the COGNIFOG project, we recommend deploying an Edge Server to function as the iPerf3 server and a Raspberry Pi to serve as the iPerf3 client. However, once iPerf3 is installed on any machine, it can be configured either as a server or as a client, offering flexibility in its deployment and use.  
+  - **iPerf3 server**: To be installed in an Edge server with an x86-64 architecture:
     - `iperf3-server-deploy.yaml`: iPerf3 server deployment file
     - `iperf3-server-service.yaml`: iPerf3 server service file
-  - **iPerf3 client**: To be installed in a machine with an ARM64 architecture:
+  - **iPerf3 client**: To be installed in a Raspberry Pi with an ARM64 architecture:
     - `iperf3-client-deploy.yaml`: iPerf3 client deployment file
     - `iperf3-client-service.yaml`: iPerf3 client service file
 
