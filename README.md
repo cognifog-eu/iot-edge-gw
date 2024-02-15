@@ -144,7 +144,9 @@ The IoT Edge Gateway can be populated with a toolkit of open-source applications
   - It can be installed in the Raspberry Pi by following the steps from https://github.com/cognifog-eu/mqtt-broker.
 - **Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
   - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
-- **iPerf3**: iPerf3 is an open-source tool for active measurements of the maximum achievable bandwidth on IP networks. It supports tuning of various parameters related to timing, buffers and protocols (TCP, UDP, SCTP with IPv4 and IPv6). For each test it reports the bandwidth, loss, and other parameters (https://iperf.fr/). To use iPerf3 it is necessary to install it in two machines; one acting as a server and the other as a client. Once iPerf3 is installed, the machine can be configured to act as a server or as a client.  
+- **iPerf3**: iPerf3 is an open-source tool for active measurements of the maximum achievable bandwidth on IP networks. It supports tuning of various parameters related to timing, buffers and protocols (TCP, UDP, SCTP with IPv4 and IPv6). For each test it reports the bandwidth, loss, and other parameters (https://iperf.fr/). 
+ 
+To use iPerf3 it is necessary to install it in two machines; one acting as a server and the other as a client. Once iPerf3 is installed, the machine can be configured to act as a server or as a client.  
   - **iPerf3 server**: To be installed in a machine with an x86-64 architecture:
     - `iperf3-server-deploy.yaml`: iPerf3 server deployment file
     - `iperf3-server-service.yaml`: iPerf3 server service file
