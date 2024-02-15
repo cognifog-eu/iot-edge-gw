@@ -204,7 +204,7 @@ Once inside the corresponding pods, run the following commands in each case:
   - **iPerf3 server**:
     - `iperf3 -s`: It configures the iPerf3 instance as a server
   - **iPerf3 client**: 
-    - `iperf3 -c <server-pod-IP>`: It configures the iPerf3 instance as a client and starts the communication with the server
+    - `iperf3 -c <server-pod-IP>`: It configures the iPerf3 instance as a client and starts the communication with the corresponding IP address of the server; i.e., `<server-pod-IP>`
 
 (Further informartion on the iPerf3 commands can be found in https://iperf.fr/iperf-doc.php)
 
