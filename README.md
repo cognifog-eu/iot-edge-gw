@@ -200,7 +200,7 @@ The following message may appear if Portainer is not configured just after its d
 Once iPerf3 is installed in two different nodes (one acting as a server and the other as a client), it is necessary to get a shell to the pod running iPerf3 in each case by running the following command:
 `kubectl exec -it <pod_name> -n <iperf3-server / iperf3-client> -- sh`, where `<pod_name>` corresponds to the name of the pod.
 
-Once inside the corresponding pods, run the following commands in each case:
+Once inside the corresponding pods, run the following commands in each case for a basic example:
   - **iPerf3 server**:
     - `iperf3 -s`: It configures the iPerf3 instance as a server
   - **iPerf3 client**: 
