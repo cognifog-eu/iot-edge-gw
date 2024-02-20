@@ -6,6 +6,8 @@ To deploy the IoT Edge Gateway on the embedded version of ARCA Trusted OS, it is
 
 **This setup also requires that the Raspberry Pi's WiFi interface is not used for Internet access. Instead, the Raspberry Pi should be connected to the Internet via its Ethernet interface.**
 
+**This solution does not survive a reboot and needs to be applied every time the Raspberry Pi is restarted.**
+
 - **Step 1.** It is needed to check if *iwd* is allowed to perform network configuration on interfaces it manages. This can be accomplished by adding the following setting to `/etc/iwd/main.conf`:
 ```
 [General]
