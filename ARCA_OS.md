@@ -69,6 +69,6 @@ sudo iptables -F
 
 By following these steps, you are essentially allowing all traffic temporarily, which might expose your server to potential security risks. After resolving the issue with Home Assistant, it's recommended to re-enable the firewall and configure it properly.
 
-It is worth noting that the modification of *iptables* can impact other services, like the configuration of the Raspberry Pi as an Access Point.
+**Be careful: the modification of *iptables* can impact other services, like the configuration of the Raspberry Pi as an Access Point.**
 
 For further details and explanation, you can refer to the following link: https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules#flushing-all-rules-deleting-all-chains-and-accepting-all 
