@@ -16,6 +16,10 @@ A Tasmota pre-configured file with the configuration of Tasmota 13.3.0 for an ES
 
 8. If successful, the 'Home Assistant mobile app' should display a message similar to 'Commissioning complete'
 
+Apart from the Web UI interface of Tasmota, there are also alternative ways to communicate with these devices: with MQTT, with web requests, and over serial bridge (see https://tasmota.github.io/docs/Commands/) for more information. As a matter of example, an easy way to retrieve the basic information of the device flashed with the Tasmota firmware via a web request is the following:
+
+`curl "http://<IP_address_of_the_Tasmota_device>/cm?cmnd=Status%200"`
+
 ## A. Config_tasmota_069412_5138_13.3.0.dmp
 Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 04/01/2024 with the following features:
 - Device Name (*Model* field in Home Assistant menu): `ESP32`
