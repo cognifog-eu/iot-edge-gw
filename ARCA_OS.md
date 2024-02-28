@@ -46,7 +46,9 @@ sudo iptables -A FORWARD -i wlan0 -j ACCEPT
 
 (Further information can be found in https://iwd.wiki.kernel.org/ap_mode)
 
-## B. Solving issues with Home Assistant
+## B. Solving issues with Home Assistant (temporary method)
+**This solution does not survive a reboot and needs to be applied every time the Raspberry Pi is restarted.**
+
 If experiencing issues accessing the **Home Assistant** interface on port 8123, it may be due to firewall restrictions. Therefore, it is recommended to follow these steps to temporarily disable the firewall. Please note that disabling the firewall should be done cautiously and is intended for troubleshooting purposes.
 
 - **Step 1. Set Default Policies to ACCEPT:** Setting the default policies to ACCEPT ensures that you won't be locked out of your server via SSH.
@@ -74,3 +76,11 @@ By following these steps, you are essentially allowing all traffic temporarily, 
 **Be careful: the modification of *iptables* can impact other services, like the configuration of the Raspberry Pi as an Access Point.**
 
 For further details and explanation, you can refer to the following link: https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules#flushing-all-rules-deleting-all-chains-and-accepting-all 
+
+## C. Solving issues with Home Assistant (permanent method)
+If experiencing issues accessing the **Home Assistant** interface on port 8123, it may be due to firewall restrictions. The commands clear all active rules from the iptables (IPv4) and ip6tables (IPv6) firewalls permanently, effectively disabling any configured network traffic filtering.
+```
+echo "" > /etc/iptables/iptables.rules
+echo "" > /etc/iptables/ip6tables.rules
+```
+
