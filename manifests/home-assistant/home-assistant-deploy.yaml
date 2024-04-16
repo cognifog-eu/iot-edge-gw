@@ -23,11 +23,12 @@ spec:
     spec:
       containers:
       - name: bluez
-        image: ghcr.io/mysticrenji/bluez-service:v1.0.0
+        image: ghcr.io/mysticrenji/bluez-service:v1.1.0
         securityContext:
           privileged: true
       - name: home-assistant
-        image: ghcr.io/home-assistant/home-assistant:stable
+        # image: ghcr.io/home-assistant/home-assistant:stable
+        image: ghcr.io/home-assistant/home-assistant:2024.4.3
         # imagePullPolicy: Always
         resources:
           requests:
@@ -38,14 +39,10 @@ spec:
         - containerPort: 8123
         volumeMounts:
         - mountPath: /config
-          name: ha-config
-        - mountPath: /media
-          name: media-volume          
-        # - mountPath: /run/dbus
-        #   name: d-bus
-        #   readOnly: true
-        - mountPath: /dev/ttyUSB1
-          name: zigbee
+          name: ha-config        
+        - mountPath: /run/dbus
+          name: d-bus
+          readOnly: true
         #- mountPath: /dev/video0
         #  name: cam
         securityContext:
@@ -59,19 +56,13 @@ spec:
       volumes:
       - name: ha-config
         hostPath:
-          path: /home/cognifog/iot-edge-gw/ha-config
-      - name: media-volume
-        hostPath:
-          path: /tmp/media
+          path: /root/cognifog/iot-edge-gw/ha-config
       #  hostPath:
       #    path: /tmp/home-assistant
       #    type: DirectoryOrCreate
-      # - name: d-bus
-      #   hostPath:
-      #     path: /run/dbus
-      - name: zigbee
+      - name: d-bus
         hostPath:
-          path: /dev/ttyACM0
+          path: /run/dbus
       #- name: cam
       #  hostPath:
       #    path: /dev/video0
