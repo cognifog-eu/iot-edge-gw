@@ -2,8 +2,8 @@
 End devices can be configured to interact with the IoT Edge Gateway by means of the MATTER protocol. More specifically, this communication has been validated by using ESP32-S2 DevKitM-1 devices (https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) and the firmware provided by Tasmota (https://tasmota.github.io/docs/).
 
 A Tasmota pre-configured file with the configuration of Tasmota 13.3.0 for an ESP32-S2 DevKitM-1 device is provided in this folder. To flash an ESP32-S2 device with this firmware, connect the ESP32-S2 to a laptop via USB and visit its web installer: https://tasmota.github.io/install/. Then, follow these steps:
-1. Click 'CONNECT' and select the COM port to which the device is connected
-2. Press 'INSTALL TASMOTA (ENGLISH)' (the device's memory will be erased to install the new firmware)
+1. Click 'Upload factory.bin' and select the file `tasmota32s2_13.3.0.factory.bin`
+2. Press 'CONNECT' and select the COM port to which the device is connected. Setup will execute automatically
 3. Once the installation is finished, configure the WiFi network appropiately
 4. Then navigate with the browser to the IP allocated to the ESP32-S2 and click 'Configuration -> Restore Configuration'
 5. Use the file provided in this folder with the format `Config_tasmota_<version>.dmp` and click 'Start restore'. Please note that WiFi connections are also preconfigured in the configuration file. In consequence, Tasmota configuration can only be modified by accessing its IP address in the corresponding WiFi network 
@@ -20,7 +20,7 @@ Apart from the Web UI interface of Tasmota, there are also alternative ways to c
 
 `curl "http://<IP_address_of_the_Tasmota_device>/cm?cmnd=Status%200"`
 
-## A. Config_tasmota_069412_5138_13.3.0.dmp
+## A. Config_tasmota_064876_2166_13.3.0.dmp
 Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 23/04/2024 with the following features:
 - Device Name (*Model* field in Home Assistant menu): `Tasmota1` (please change the name to `Tasmota<X>` as previously mentioned)
 - Friendly Name (*Device* field in Home Assistant menu): `Tasmota1` (please change the name to `Tasmota<X>` as previously mentioned)
