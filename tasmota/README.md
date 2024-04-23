@@ -22,12 +22,10 @@ Apart from the Web UI interface of Tasmota, there are also alternative ways to c
 
 ## A. Config_tasmota_069412_5138_13.3.0.dmp
 Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 23/04/2024 with the following features:
-- Device Name (*Model* field in Home Assistant menu): `Tasmota2` (please change the name to `Tasmota<X>` as previously mentioned)
-- Friendly Name (*Device* field in Home Assistant menu): `Tasmota2` (please change the name to `Tasmota<X>` as previously mentioned)
+- Device Name (*Model* field in Home Assistant menu): `Tasmota1` (please change the name to `Tasmota<X>` as previously mentioned)
+- Friendly Name (*Device* field in Home Assistant menu): `Tasmota1` (please change the name to `Tasmota<X>` as previously mentioned)
 - Wifi connectivity based on 1 preconfigured network:
   - SSID_1: `cognifog_wifi`
-  - Password: `<protected>`
-  - SSID_2: `iot_responda`
   - Password: `<protected>`
 - Sensors:
   - 1 RGB led sensor (WS2812) in GPIO18
