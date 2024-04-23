@@ -7,7 +7,7 @@ A Tasmota pre-configured file with the configuration of Tasmota 13.3.0 for an ES
 3. Once the installation is finished, configure the WiFi network appropiately
 4. Then navigate with the browser to the IP allocated to the ESP32-S2 and click 'Configuration -> Restore Configuration'
 5. Use the file provided in this folder with the format `Config_tasmota_<version>.dmp` and click 'Start restore'. Please note that WiFi connections are also preconfigured in the configuration file. In consequence, Tasmota configuration can only be modified by accessing its IP address in the corresponding WiFi network 
-6. Once the restoration is completed, change the Friendly Name of the device. To do it, go to 'Configuration -> Configure Other' and change the Friendly Name to `Tasmota<X>`, being `<X>` a unique value between `1` and `10`
+6. Once the restoration is completed, change the Friendly Name of the device. To do it, go to 'Configuration -> Configure Other' and change the `Device Name` and the `Friendly Name` fields to `Tasmota<X>`, being `<X>` a unique value between `1` and `10`
 7. Since the pre-configured file includes the compatibility with MATTER, a 10-minute window is automatically opened to perform the commissioning process with a MATTER controller. Go to the 'Main Menu' and scan the QR code with the 'Home Assistant mobile app' installed in a mobile device. **To complete the commissioning process successfully, all three elements (i.e., the MATTER-based device, the IoT Edge GW, and the phone running the mobile app) must be in the same network.**
   - Android: https://play.google.com/store/apps/details?id=io.homeassistant.companion.android
   - iOS: https://apps.apple.com/us/app/home-assistant/id1099568401
@@ -21,11 +21,13 @@ Apart from the Web UI interface of Tasmota, there are also alternative ways to c
 `curl "http://<IP_address_of_the_Tasmota_device>/cm?cmnd=Status%200"`
 
 ## A. Config_tasmota_069412_5138_13.3.0.dmp
-Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 04/01/2024 with the following features:
-- Device Name (*Model* field in Home Assistant menu): `ESP32`
-- Friendly Name (*Device* field in Home Assistant menu): `Tasmota1` (please change the name to `Tasmota<X>` as previously mentioned)
+Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 23/04/2024 with the following features:
+- Device Name (*Model* field in Home Assistant menu): `Tasmota2` (please change the name to `Tasmota<X>` as previously mentioned)
+- Friendly Name (*Device* field in Home Assistant menu): `Tasmota2` (please change the name to `Tasmota<X>` as previously mentioned)
 - Wifi connectivity based on 1 preconfigured network:
-  - SSID: `iot_responda`
+  - SSID_1: `cognifog_wifi`
+  - Password: `<protected>`
+  - SSID_2: `iot_responda`
   - Password: `<protected>`
 - Sensors:
   - 1 RGB led sensor (WS2812) in GPIO18
@@ -38,11 +40,3 @@ Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 04/01/2024 w
 |     1      | Light 3 RGB     | *_Not used_*         |
 |     2      | Temperature     | AM2301#Temperature   |
 |     3      | Humidity        | AM2301#Humidity      |
-
-## B. Config_tasmota_069412_5138_13.3.0_v2.dmp
-Same configuration as in `A. Config_tasmota_069412_5138_13.3.0.dmp`, but created at 06/02/2024 with an additional network:
-- Wifi connectivity based on 2 preconfigured networks:
-  - SSID_1: `iot_responda`
-  - Password: `<protected>`
-  - SSID_2: `cognifog_wifi`
-  - Password: `<protected>`
