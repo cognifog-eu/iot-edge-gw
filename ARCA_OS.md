@@ -84,3 +84,15 @@ echo "" > /etc/iptables/iptables.rules
 echo "" > /etc/iptables/ip6tables.rules
 ```
 
+## D. Ensuring MATTER operation (IPv6 configuration)
+Matter uses IPv6 for its operational communications, and leverages both IPv6 Unicast and Multicast addressing.Some commands are required to configure IPv6 in the IoT edge GW running ARCA OS Embedded, thus ensuring the proper operation of the MATTER communication protocol. 
+```
+sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sysctl -w net.ipv6.conf.wlan0.disable_ipv6=0
+sysctl -w net.ipv6.conf.end0.disable_ipv6=0
+
+ip -6 route add default dev end0
+ip -6 route add fe80::/64 dev wlan0 metric 1
+```
+
+(Note that *end0* refers to the Ethernet interface and *wlan0* refers to the WiFi interface of the IoT edge GW, respectively)
