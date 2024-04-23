@@ -5,7 +5,7 @@ For the COGNIFOG project, the configuration of Home Assistant in a fresh new IoT
 2. Then, set the basic information of the IoT Edge Gateway according to the template provided in the file `configuration.yaml` of this repository and replace the one existing in the folder `/home/cognifog/iot-edge-gw/ha-config` of the Raspberry Pi.
 3. Similarly, copy the file `automations.yaml` of this repository and replace the one existing in the folder `/home/cognifog/iot-edge-gw/ha-config` of the Raspberry Pi. This file contains all automations that enable the non-assisted operation of Home Assistant.
 
-## A. ha-config-v1.0.rar
+## A. v1.0
 Minimal configuration of Home Assistant, with the following configured capabilities:
 - Integration with the MATTER controller add-on for Home Assistant
 - Configuration of an MQTT client in Home Assistant that can be connected to an external MQTT broker with the following features:
@@ -17,7 +17,6 @@ Minimal configuration of Home Assistant, with the following configured capabilit
 - Activation of Home Assistant's *Advanced Mode* (https://www.home-assistant.io/blog/2019/07/17/release-96/#advanced-mode)
 - Deactivation of the flag 'Automatically close connection' to the server after being hidden for 5 minutes
 
-## B. configuration.yaml
 The basic information of the Home Assistance must be included in the `configuration.yaml` file (https://www.home-assistant.io/docs/configuration/basic). Please change the fields under the `homeassistant` topic accordingly and replace the existing file in your Raspberry Pi:
 - name: `edge-gw-<X>` (being `X` a unique number)
 - latitude: `<latitude>`
@@ -25,7 +24,6 @@ The basic information of the Home Assistance must be included in the `configurat
 - elevation: `<elevation>`
 - etc
 
-## C. automations.yaml
 The current version of the `automations.yaml` in this repository includes the following automations, with their corresponding MQTT topics and data fields:
 - **AUT_hum**: Forward humidity value to MQTT broker
   - <edge_gw_id>/esp32s2/<device_id>/hum &rarr; <timestamp_gw>,<humidity_value>
@@ -44,3 +42,6 @@ The current version of the `automations.yaml` in this repository includes the fo
   - <edge_gw_id>/attributes/location &rarr; {"latitude": <latitude_gw>, "longitude": <longitude_gw>}
 - **AUT_HA_off**: Notify unavailability of the IoT Edge GW to the MQTT broker 
   - <edge_gw_id>/status &rarr; <timestamp_gw>,offline
+
+## B. v2.0
+Same configuration as v1.0, but with a new version of the `automations.yaml` file to adapt the resulting MQTT messages to the JSON-based CloudEvents specification.  

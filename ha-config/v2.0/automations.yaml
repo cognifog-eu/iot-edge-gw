@@ -1,0 +1,264 @@
+- id: '1713861994820'
+  alias: AUT_hum_ce
+  description: Forward humidity value to MQTT broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_humidity
+    - sensor.tasmota2_humidity
+    - sensor.tasmota3_humidity
+    - sensor.tasmota4_humidity
+    - sensor.tasmota5_humidity
+    - sensor.tasmota6_humidity
+    - sensor.tasmota7_humidity
+    - sensor.tasmota8_humidity
+    - sensor.tasmota9_humidity
+    - sensor.tasmota10_humidity
+  condition:
+  - condition: template
+    value_template: '{{ trigger.to_state.state | float < 100 and trigger.to_state.state
+      | float > -1 }}'
+  action:
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') | replace(''_humidity'',
+        '''') }}/hum'
+      payload_template: "{\n  \"specversion\": \"1.0\",\n  \"id\": \"{{ range(1000,9999)|random
+        }}c329-1bd6-1bd6-ad0c-869a3c3{{ range(10000,65535)|random }}\",\n  \"type\":
+        \"humidity\",\n  \"source\": \"urn:i2cat:cognifog:esp32s2:{{ trigger.entity_id
+        | replace('sensor.tasmota', '') | replace('_humidity', '') }}\",\n  \"time\":
+        \"{{ now().utcnow().isoformat('T', 'milliseconds')}}Z\",\n  \"datacontenttype\":
+        \"application/json\",\n  \"data\": {{ trigger.to_state.state | float }}\n}"
+  mode: single
+- id: '1713865331320'
+  alias: AUT_temp_ext_ce
+  description: Forward (external) temperature value to MQTT broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_temperature
+    - sensor.tasmota2_temperature
+    - sensor.tasmota3_temperature
+    - sensor.tasmota4_temperature
+    - sensor.tasmota5_temperature
+    - sensor.tasmota6_temperature
+    - sensor.tasmota7_temperature
+    - sensor.tasmota8_temperature
+    - sensor.tasmota9_temperature
+    - sensor.tasmota10_temperature
+  condition:
+  - condition: template
+    value_template: '{{ trigger.to_state.state | float < 100 and trigger.to_state.state
+      | float > -1 }}'
+  action:
+  - service: mqtt.publish
+    data:
+      qos: '0'
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') |replace(''_temperature'',
+        '''') }}/temp-ext'
+      payload_template: "{\n  \"specversion\": \"1.0\",\n  \"id\": \"{{ range(1000,9999)|random
+        }}c329-1bd6-1bd6-ad0c-869a3c3{{ range(10000,65535)|random }}\",\n  \"type\":
+        \"temperature-ext\",\n  \"source\": \"urn:i2cat:cognifog:esp32s2:{{ trigger.entity_id
+        | replace('sensor.tasmota', '') | replace('_temperature', '') }}\",\n  \"time\":
+        \"{{ now().utcnow().isoformat('T', 'milliseconds')}}Z\",\n  \"datacontenttype\":
+        \"application/json\",\n  \"data\": {{ trigger.to_state.state | float }}\n}"
+  mode: single
+- id: '1713868547661'
+  alias: AUT_HA_off_ce
+  description: IoT Edge GW is offline
+  trigger:
+  - platform: homeassistant
+    event: shutdown
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/status'
+      payload_template: "{\n  \"specversion\": \"1.0\",\n  \"id\": \"{{ range(1000,9999)|random
+        }}c329-1bd6-1bd6-ad0c-869a3c3{{ range(10000,65535)|random }}\",\n  \"type\":
+        \"status\",\n  \"source\": \"urn:i2cat:cognifog:rpi4b:{{ state_attr('zone.home','friendly_name')
+        }}\",\n  \"time\": \"{{ now().utcnow().isoformat('T', 'milliseconds')}}Z\",\n
+        \ \"datacontenttype\": \"application/json\",\n  \"data\": \"offline\"\n}"
+  mode: single
+- id: '1713868569639'
+  alias: AUT_HA_on_ce
+  description: IoT Edge GW is online
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/status'
+      payload_template: "{\n  \"specversion\": \"1.0\",\n  \"id\": \"{{ range(1000,9999)|random
+        }}c329-1bd6-1bd6-ad0c-869a3c3{{ range(10000,65535)|random }}\",\n  \"type\":
+        \"status\",\n  \"source\": \"urn:i2cat:cognifog:rpi4b:{{ state_attr('zone.home','friendly_name')
+        }}\",\n  \"time\": \"{{ now().utcnow().isoformat('T', 'milliseconds')}}Z\",\n
+        \ \"datacontenttype\": \"application/json\",\n  \"data\": \"online\"\n}"
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/attributes/location'
+      payload_template: "{\n  \"specversion\": \"1.0\",\n  \"id\": \"{{ range(1000,9999)|random
+        }}c329-1bd6-1bd6-ad0c-869a3c3{{ range(10000,65535)|random }}\",\n  \"type\":
+        \"location\",\n  \"source\": \"urn:i2cat:cognifog:rpi4b:{{ state_attr('zone.home','friendly_name')
+        }}\",\n  \"time\": \"{{ now().utcnow().isoformat('T', 'milliseconds')}}Z\",\n
+        \ \"datacontenttype\": \"application/json\",\n  \"data\": {\n    \"latitude\":
+        {{state_attr(\"zone.home\",\"latitude\")}}, \n    \"longitude\": {{state_attr(\"zone.home\",\"longitude\")}}\n
+        \ }\n}"
+  mode: single
+- id: '1713868589260'
+  alias: AUT_hum_av_ce
+  description: Forward availability of the humidity sensor to the MQTT broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_humidity
+    - sensor.tasmota2_humidity
+    - sensor.tasmota3_humidity
+    - sensor.tasmota4_humidity
+    - sensor.tasmota5_humidity
+    - sensor.tasmota6_humidity
+    - sensor.tasmota7_humidity
+    - sensor.tasmota8_humidity
+    - sensor.tasmota9_humidity
+    - sensor.tasmota10_humidity
+    from: unavailable
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') | replace(''_humidity'',
+        '''') }}/hum/status'
+      payload_template: "{\n  \"specversion\": \"1.0\",\n  \"id\": \"{{ range(1000,9999)|random
+        }}c329-1bd6-1bd6-ad0c-869a3c3{{ range(10000,65535)|random }}\",\n  \"type\":
+        \"status\",\n  \"source\": \"urn:i2cat:cognifog:esp32s2:{{ trigger.entity_id
+        | replace('sensor.tasmota', '') | replace('_humidity', '') }}\",\n  \"time\":
+        \"{{ now().utcnow().isoformat('T', 'milliseconds')}}Z\",\n  \"datacontenttype\":
+        \"application/json\",\n  \"data\": \"online\"\n}"
+  mode: single
+- id: '1713868605551'
+  alias: AUT_hum_unav_ce
+  description: Forward unavailability of the humidity sensor to the MQTT broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_humidity
+    - sensor.tasmota2_humidity
+    - sensor.tasmota3_humidity
+    - sensor.tasmota4_humidity
+    - sensor.tasmota5_humidity
+    - sensor.tasmota6_humidity
+    - sensor.tasmota7_humidity
+    - sensor.tasmota8_humidity
+    - sensor.tasmota9_humidity
+    - sensor.tasmota10_humidity
+    from:
+    to: unavailable
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') | replace(''_humidity'',
+        '''') }}/hum/status'
+      payload_template: "{\n  \"specversion\": \"1.0\",\n  \"id\": \"{{ range(1000,9999)|random
+        }}c329-1bd6-1bd6-ad0c-869a3c3{{ range(10000,65535)|random }}\",\n  \"type\":
+        \"status\",\n  \"source\": \"urn:i2cat:cognifog:esp32s2:{{ trigger.entity_id
+        | replace('sensor.tasmota', '') | replace('_humidity', '') }}\",\n  \"time\":
+        \"{{ now().utcnow().isoformat('T', 'milliseconds')}}Z\",\n  \"datacontenttype\":
+        \"application/json\",\n  \"data\": \"offline\"\n}"
+  mode: single
+- id: '1713868630195'
+  alias: AUT_temp_ext_av_ce
+  description: Forward availability of the (external) temperature sensor to the MQTT
+    broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_temperature
+    - sensor.tasmota2_temperature
+    - sensor.tasmota3_temperature
+    - sensor.tasmota4_temperature
+    - sensor.tasmota5_temperature
+    - sensor.tasmota6_temperature
+    - sensor.tasmota7_temperature
+    - sensor.tasmota8_temperature
+    - sensor.tasmota9_temperature
+    - sensor.tasmota10_temperature
+    from: unavailable
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') | replace(''_temperature'',
+        '''') }}/temp-ext/status'
+      payload_template: "{\n  \"specversion\": \"1.0\",\n  \"id\": \"{{ range(1000,9999)|random
+        }}c329-1bd6-1bd6-ad0c-869a3c3{{ range(10000,65535)|random }}\",\n  \"type\":
+        \"status\",\n  \"source\": \"urn:i2cat:cognifog:esp32s2:{{ trigger.entity_id
+        | replace('sensor.tasmota', '') | replace('_temperature', '') }}\",\n  \"time\":
+        \"{{ now().utcnow().isoformat('T', 'milliseconds')}}Z\",\n  \"datacontenttype\":
+        \"application/json\",\n  \"data\": \"online\"\n}"
+  mode: single
+- id: '1713868649421'
+  alias: AUT_temp_ext_unav_ce
+  description: Forward unavailability of the (external) temperature sensor to the
+    MQTT broker
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tasmota1_temperature
+    - sensor.tasmota2_temperature
+    - sensor.tasmota3_temperature
+    - sensor.tasmota4_temperature
+    - sensor.tasmota5_temperature
+    - sensor.tasmota6_temperature
+    - sensor.tasmota7_temperature
+    - sensor.tasmota8_temperature
+    - sensor.tasmota9_temperature
+    - sensor.tasmota10_temperature
+    from:
+    to: unavailable
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: true
+      topic_template: '{{ state_attr(''zone.home'',''friendly_name'') }}/esp32s2/{{
+        trigger.entity_id | replace(''sensor.tasmota'', '''') | replace(''_temperature'',
+        '''') }}/temp-ext/status'
+      payload_template: "{\n  \"specversion\": \"1.0\",\n  \"id\": \"{{ range(1000,9999)|random
+        }}c329-1bd6-1bd6-ad0c-869a3c3{{ range(10000,65535)|random }}\",\n  \"type\":
+        \"status\",\n  \"source\": \"urn:i2cat:cognifog:esp32s2:{{ trigger.entity_id
+        | replace('sensor.tasmota', '') | replace('_temperature', '') }}\",\n  \"time\":
+        \"{{ now().utcnow().isoformat('T', 'milliseconds')}}Z\",\n  \"datacontenttype\":
+        \"application/json\",\n  \"data\": \"offline\"\n}"
+  mode: single
