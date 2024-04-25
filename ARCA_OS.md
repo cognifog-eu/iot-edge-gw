@@ -1,5 +1,5 @@
 # ARCA OS Embedded
-To deploy the IoT Edge Gateway on the embedded version of ARCA Trusted OS, it is recommended to follow the PDF document provided by CYSEC.
+To deploy the IoT Edge Gateway on the embedded version of ARCA Trusted OS, it is recommended to follow the installation guide provided by CYSEC.
 
 ## A. Configuring a Raspberry Pi as a WiFi Access Point at 2.4 GHz
 **This setup requires a Raspberry Pi using ARCA OS and iwd as system network service.**
@@ -44,6 +44,18 @@ sudo iptables -t nat -A POSTROUTING -s 192.168.6.0/24 -o end0 -j MASQUERADE
 sudo iptables -A FORWARD -i wlan0 -j ACCEPT
 ```
 
+Matter uses IPv6 for its operational communications, and leverages both IPv6 Unicast and Multicast addressing. Some commands are required to configure IPv6 in the IoT edge GW running ARCA OS Embedded, thus ensuring the proper operation of the MATTER communication protocol. 
+- **Step 6.** Ensuring MATTER operation (IPv6 configuration)
+```
+sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sysctl -w net.ipv6.conf.wlan0.disable_ipv6=0
+sysctl -w net.ipv6.conf.end0.disable_ipv6=0
+
+ip -6 route add default dev end0
+ip -6 route add fe80::/64 dev wlan0 metric 1
+```
+(Note that *end0* refers to the Ethernet interface and *wlan0* refers to the WiFi interface of the IoT edge GW, respectively)
+
 (Further information can be found in https://iwd.wiki.kernel.org/ap_mode)
 
 ## B. Solving issues with Home Assistant (temporary method)
@@ -83,16 +95,3 @@ If experiencing issues accessing the **Home Assistant** interface on port 8123, 
 echo "" > /etc/iptables/iptables.rules
 echo "" > /etc/iptables/ip6tables.rules
 ```
-
-## D. Ensuring MATTER operation (IPv6 configuration)
-Matter uses IPv6 for its operational communications, and leverages both IPv6 Unicast and Multicast addressing. Some commands are required to configure IPv6 in the IoT edge GW running ARCA OS Embedded, thus ensuring the proper operation of the MATTER communication protocol. 
-```
-sysctl -w net.ipv6.conf.all.disable_ipv6=1
-sysctl -w net.ipv6.conf.wlan0.disable_ipv6=0
-sysctl -w net.ipv6.conf.end0.disable_ipv6=0
-
-ip -6 route add default dev end0
-ip -6 route add fe80::/64 dev wlan0 metric 1
-```
-
-(Note that *end0* refers to the Ethernet interface and *wlan0* refers to the WiFi interface of the IoT edge GW, respectively)

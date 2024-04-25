@@ -134,12 +134,12 @@ And that’s it! You have a Kubernetes cluster running! You can check it with th
 (A comprehensive description of **B. K3S installation** step can be found at https://www.padok.fr/en/blog/raspberry-kubernetes. In addition, here is the official rancher documentation to install k3s: https://docs.k3s.io/quick-start)
 
 ## C. IoT Edge Gateway toolkit
-The IoT Edge Gateway can be populated with a toolkit of open-source applications, which are deployed via K3S. The corresponding deployment files (YAML manifests) of each application are available in the `/manifests` folder of this repository:
+The IoT Edge Gateway can be populated with a toolkit of open-source applications, which are deployed via K3S either locally or remotely. The deployment files (YAML manifests) of the different applications are available in the `/manifests` folder of this repository:
 - **Home Assistant**: Open-source home automation platform that allows users to control and manage various smart devices and services (https://www.home-assistant.io/)
-  - `home-assistant-deploy.yaml`: Home Assistant deployment file (`stable` release, validated at 13/02/2024 for 2024.2.1 version)
+  - `home-assistant-deploy.yaml`: Home Assistant deployment file (`2024.4.3` release, validated at 23/04/2024)
   - `home-assistant-service.yaml`: Home Assistant service file
 - **MATTER controller add-on for Home Assistant**: Plug-in for Home Assistant to control MATTER-based end devices running over WiFi (https://www.home-assistant.io/integrations/matter/)
-  - `matter-server-deploy.yaml`: Matter Server deployment file (`4.0.2` release, validated at 02/01/2024 and `5.5.3` release, validated at 13/02/2024)
+  - `matter-server-deploy.yaml`: Matter Server deployment file (`5.9.0` release, validated at 23/04/2024)
   - `matter-server-service.yaml`: Matter Server service file
 - **Mosquitto MQTT broker**: Open-source message broker that implements the MQTT protocol (https://mosquitto.org/). 
   - It can be installed in the Raspberry Pi by following the steps from https://github.com/cognifog-eu/mqtt-broker.
@@ -154,7 +154,9 @@ The IoT Edge Gateway can be populated with a toolkit of open-source applications
     - `iperf3-client-deploy.yaml`: iPerf3 client deployment file
     - `iperf3-client-service.yaml`: iPerf3 client service file
 
-To install an application, copy all its files from the corresponding `/manifests` folder of this repository into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
+To install an application locally, copy all its files from the corresponding `/manifests` folder of this repository into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
+
+For a remote deployment of applications, see **E. Integration with OCM**.
 
 Check that services are properly deployed by running:
 `kubectl get pods -A`
@@ -166,12 +168,12 @@ By default, the deployment files of the **Home Assistant** (i.e., `home-assistan
 
 The creation of these folders can be automatized by executing the script `CreateFolders.sh`, included in the `/scripts` folder of this repository. Just copy the `CreateFolders.sh` file into the Raspberry Pi and execute `bash CreateFolders.sh`. Alternatively, the user can create different folders as long as they match the definition of the previous deployment files.
 
-(Note that the installation of **Home Assistant** and the **Matter controller add-on** can be very slow due to the size of both images: 1.7 GB and 394 MB, respectively, in versions employed at 02/01/2024. For this reason, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface.)
+(Note that the installation of **Home Assistant** and the **Matter controller add-on** can be very slow due to the size of both images: at least 1.7 GB and 394 MB, respectively. For this reason, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface.)
 
 ## D. Configuration
 ### D.1. Home Assistant
 After a successful installation, Home Assistant should be running at `http://[IP_ADDRESS]:8123`.  
-From this point on, **D.2.** and **D.3.** subsections describe how to manually configure both the Matter controller and the MQTT client for Home Assistant. Alternatively, we highly recommend to follow the guide to automate the configuration of Home Assistant and these two tools in https://github.com/cognifog-eu/iot-edge-gw/tree/main/ha-config.
+From this point on, **D.2.** and **D.3.** subsections describe how to manually configure both the Matter controller and the MQTT client for Home Assistant. Alternatively, we highly recommend to follow the guide to load a preconfiguration of Home Assistant, the Matter controller and the MQTT client at https://github.com/cognifog-eu/iot-edge-gw/tree/main/ha-config.
 
 ### D.2. Matter controller add-on for Home Assistant
 It may be needed to configure the Matter Server add-on inside Home Assistant. To do it, follow these steps:
@@ -182,7 +184,7 @@ It may be needed to configure the Matter Server add-on inside Home Assistant. To
 5. Check that the URL* field contains `ws://localhost:5580/ws`
 
 ### D.3. MQTT client for Home Assistant
-Unfortunately, at 02/01/2024, the MQTT client for Home Assistant can only be configured by using the GUI of Home Assistant (https://community.home-assistant.io/t/automate-mqtt-broker-integration-set-up/607558/4). To do it, follow these steps:
+Unfortunately, at 23/04/2024, the MQTT client for Home Assistant can only be configured by using the GUI of Home Assistant (https://community.home-assistant.io/t/automate-mqtt-broker-integration-set-up/607558/4). To do it, follow these steps:
 1. Go to Settings -> Devices & services
 2. Click Add Integration
 3. Type 'MQTT' into the field 'Search for a brand name'
