@@ -168,7 +168,7 @@ By default, the deployment files of the **Home Assistant** (i.e., `home-assistan
 
 The creation of these folders can be automatized by executing the script `CreateFolders.sh`, included in the `/scripts` folder of this repository. Just copy the `CreateFolders.sh` file into the Raspberry Pi and execute `bash CreateFolders.sh`. Alternatively, the user can create different folders as long as they match the definition of the previous deployment files.
 
-(Note that the installation of **Home Assistant** and the **Matter controller add-on** can be very slow due to the size of both images: at least 1.7 GB and 394 MB, respectively. For this reason, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface.)
+(Note that the installation of **Home Assistant (2024.4.3)** and the **Matter controller add-on (5.9.0)** can be very slow due to the size of both images: 1.56 GB (plus 176 MB of the Bluetooth service) and 491 MB, respectively. For this reason, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface.)
 
 ## D. Configuration
 ### D.1. Home Assistant
