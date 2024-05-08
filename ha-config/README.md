@@ -24,7 +24,9 @@ The basic information of the Home Assistance must be included in the `configurat
 - elevation: `<elevation>`
 - etc
 
-The current version of the `automations.yaml` in this repository includes the following automations, with their corresponding MQTT topics and data fields:
+The current version of the `automations.yaml` in this repository includes the following automation scipts, that automatically translates the messages received from MATTER-based devices into MQTT packets to be forwarded to the configured MQTT broker. 
+
+The default automations are included in the following lines with their corresponding MQTT topics and data fields:
 - **AUT_hum**: Forward humidity value to MQTT broker
   - <edge_gw_id>/esp32s2/<device_id>/hum &rarr; <timestamp_gw>,<humidity_value>
 - **AUT_temp_ext**: Forward (external) temperature value to MQTT broker
