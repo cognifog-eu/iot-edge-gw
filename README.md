@@ -182,6 +182,7 @@ It may be needed to configure the Matter Server add-on inside Home Assistant. To
 3. Type 'Matter' into the field 'Search for a brand name'
 4. Click 'Matter (BETA)'
 5. Check that the URL* field contains `ws://localhost:5580/ws`
+6. Click 'Submit'
 
 ### D.3. MQTT client for Home Assistant
 Unfortunately, at 23/04/2024, the MQTT client for Home Assistant can only be configured by using the GUI of Home Assistant (https://community.home-assistant.io/t/automate-mqtt-broker-integration-set-up/607558/4). To do it, follow these steps:
