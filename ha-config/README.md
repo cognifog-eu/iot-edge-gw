@@ -3,7 +3,7 @@ This section includes a set of template files to preconfigure Home Assistant acc
 For the COGNIFOG project, the configuration of Home Assistant in a fresh new IoT Edge Gateway is based on 3 steps:
 1. To apply a new basic Home Assistant configuration, copy the `ha-config-<version>.rar` file into the Raspberry Pi, unzip it, and paste it into `/home/cognifog/iot-edge-gw/ha-config`, replacing all previously existing files.
 2. Then, set the basic information of the IoT Edge Gateway according to the template provided in the file `configuration.yaml` of this repository and replace the one existing in the folder `/home/cognifog/iot-edge-gw/ha-config` of the Raspberry Pi.
-3. Similarly, copy the file `automations.yaml` of this repository and replace the one existing in the folder `/home/cognifog/iot-edge-gw/ha-config` of the Raspberry Pi. This file contains all automations that enable the non-assisted operation of Home Assistant.
+3. Similarly, copy the file `automations.yaml` of this repository and replace the one existing in the folder `/home/cognifog/iot-edge-gw/ha-config` of the Raspberry Pi. This file contains all automations that enable the non-assisted operation of Home Assistant by automatically translating the received MATTER-based messages from end devices into MQTT messages to be forwarded to the MQTT broker.
 
 ## A. v1.0
 Minimal configuration of Home Assistant, with the following configured capabilities:
