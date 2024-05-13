@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "iperf3-client.fullname" . }}-deployment
+  labels:
+  {{- include "iperf3-client.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: iperf3-client
+    {{- include "iperf3-client.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: iperf3-client
+      {{- include "iperf3-client.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.deployment.iperf3Client.image.repository }}:{{ .Values.deployment.iperf3Client.image.tag
+          | default .Chart.AppVersion }}
+        name: iperf3-client
+        ports:
+        - containerPort: 5201
+        resources: {}
+      hostNetwork: true

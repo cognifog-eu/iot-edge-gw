@@ -1,0 +1,14 @@
+deployment:
+  iperf3Client:
+    image:
+      repository: cpcontainer/iperf3
+      tag: latest
+  replicas: 1
+kubernetesClusterDomain: cluster.local
+service:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 5201
+  type: ClusterIP

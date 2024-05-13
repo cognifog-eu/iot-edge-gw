@@ -1,0 +1,14 @@
+deployment:
+  iperf3Server:
+    image:
+      repository: leodotcloud/swiss-army-knife
+      tag: latest
+  replicas: 1
+kubernetesClusterDomain: cluster.local
+service:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 5201
+  type: ClusterIP
