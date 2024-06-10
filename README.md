@@ -11,12 +11,12 @@ The IoT Edge Gateway has been validated in the following platform:
 (This manual has been created purposely for a Raspberry Pi with `cognifog` as hostname).
 
 ### A.1. Optional: Raspberry Pi permanently connected to an external WiFi network
-After connected to a WiFi network (normally, if the network is created by a laptop in the so called softAP process), the Raspberry Pi may disconnect after a certain period of time (normally, after less than one hour). One possible cause of this malfunctioning is the Power Management feature of its wireless interface. A potential solution to alleviate this problem is to disconnect the Power Management mode. To do it, it is necessary to type the following commands:
-1. `sudo apt install wireless-tools`: To install the wireless tools
-2. `sudo iwconfig wlan0`: To check the status of wlan0 interface
-3. `sudo iwconfig wlan0 power off`: To disable Power Management feature in wlan0
+After connected to a WiFi network (normally, if the network is created by a laptop in the so called softAP process), the Raspberry Pi may disconnect after a certain period of time (normally, after less than one hour). One possible cause of this malfunctioning is the Power Management feature of its wireless interface. A potential solution to alleviate this problem is to disconnect the Power Management mode. To do it, it is necessary to type the following commands in the Raspberry Pi terminal:
+1. `sudo apt install wireless-tools`: It installs the wireless tools
+2. `sudo iwconfig wlan0`: It checks the status of wlan0 interface
+3. `sudo iwconfig wlan0 power off`: It disables the Power Management feature in wlan0 interface
 
-To avoid having to execute this command after every Raspberry power on, a script in the systemd file can be made to run a script on startup. The instructions are summarized in the following steps:
+To avoid having to execute this command after every Raspberry Pi power on, a script in the systemd file can be made to run a script on startup. The instructions are summarized in the following steps:
 1.	Create a bash script file named `StartScript.sh` (or copy the one provided in the `/scripts` folder of this repository): 
 `sudo nano StartScript.sh`
 2.	Write the following content inside:
@@ -44,7 +44,7 @@ WantedBy=default.target
 - **Service**: Tells the system to execute the desired service, which will run on startup.
 - **Install**: Allows the service to run the WantedBy directory at the startup to handle the dependencies.
 
-6.	Set the user executable file permissions the Service unit file using the following command:
+6.	Set the user executable file permissions using the following command:
 `sudo chmod 644 /etc/systemd/system/ScriptService.service`
 7.	Use the below-stated command to enable the customized service (which allows the execution on each startup):
 `sudo systemctl enable ScriptService.service`
@@ -58,32 +58,34 @@ From now on, every time the system starts/reboots, the script file will execute 
 
 **This setup also requires that the Raspberry Pi's WiFi interface is not used for Internet access. Instead, the Raspberry Pi should be connected to the Internet via its Ethernet interface.**
 
-The first thing to do is to update and upgrade your Raspberry:
+The instructions to turn the Raspberry Pi into a WiFi Access Point at 2.4 GHz are summarized in the following steps:
+
+1. The first thing to do is to update and upgrade your Raspberry:
 ```
 sudo apt update
 sudo apt upgrade
 ```
 
-If you are using a fresh new Raspberry Pi OS, you might need to set a Wi-Fi country first. Open raspi-config with this command:
+2. If you are using a fresh new Raspberry Pi OS, you might need to set a Wi-Fi country first. Open raspi-config with this command:
 
 `sudo raspi-config`
 
-Then, go to “Localisation Options” > “WLAN country” and select your country from the list. Confirm and exit. From there on, the Wi-Fi interface will be enabled.
+3. Then, go to “Localisation Options” > “WLAN country” and select your country from the list. Confirm and exit. From there on, the Wi-Fi interface will be enabled.
 
-Start by enabling the WiFi interface in Network Manager with:
+4. Start by enabling the WiFi interface in Network Manager with:
 
 `sudo nmcli device wifi hotspot ifname wlan0 band bg ssid cognifog_wifi password <password>`
 
 By default, `cognifog_wifi` is the SSID of the resulting WiFi network, but it can be changed by any other SSID name.
 The last parameter (i.e., `<password>`) corresponds to the WiFi WPA2-based password.
 
-Next, configure Network Manager to run in access point mode, with shared IP addresses on this interface:
+5. Next, configure Network Manager to run in access point mode, with shared IP addresses on this interface:
 
 `sudo nmcli con modify Hotspot connection.autoconnect yes 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared ipv4.address 192.168.6.1/24`
 
 The last parameter corresponds to the IP (i.e., 192.168.6.1) of the Raspberry Pi within the created network and the network mask (i.e., /24). 
 
-Lastly, it is necessary to turn down and then turn up the Hotspot to apply the configuration:
+6. Lastly, it is necessary to turn down and then turn up the Hotspot to apply the configuration:
 ```
 sudo nmcli con down Hotspot
 sudo nmcli con up Hotspot
