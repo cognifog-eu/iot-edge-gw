@@ -91,7 +91,7 @@ sudo nmcli con down Hotspot
 sudo nmcli con up Hotspot
 ```
 
-Once the AP is setup, you can also use “nmtui” to edit your settings, like upgrading the security, for example. In there, you can see and edit your configuration easily, without having to find all the commands parameters. Here is the command to open this tool:
+Once the Raspberry Pi is configured as an AP, *nmtui* tool can also be used to edit the main settings, like upgrading the security, for example. In there, you can see and edit your configuration easily, without having to find all the commands parameters. Here is the command to open this tool:
 
 `sudo nmtui`
 
@@ -118,16 +118,22 @@ Lastly, it is possible to list the connected devices to the WiFi Access Point by
 (For more advanced tools to list the connected devices on a WiFi Access Point, check https://www.baeldung.com/linux/list-devices-wireless-access-point)
 
 ## B. K3S installation
-The first thing to do is to update and upgrade your Raspberry:
+The following commands need to be executed to install K3S in the Raspberry Pi and create a cluster with a single node (i.e., the Raspberry Pi itself):
+
+1. The first thing to do is to update and upgrade the Raspberry Pi:
 ```
 sudo apt update
 sudo apt upgrade
 ```
 
-Then, in file `/boot/cmdline.txt` add `cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1` to the end of the existing line (do not add it as a new line!!) and reboot the Raspberry Pi:
-`sudo nano /boot/cmdline.txt`
+2. Then, in file `/boot/cmdline.txt` add `cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1` to the end of the existing line (do not add it as a new line!!) and reboot the Raspberry Pi:
+```
+sudo nano /boot/cmdline.txt
+(modify cmdline.txt file as mentioned before)
+sudo reboot
+```
 
-The next step installs K3S:
+3. The next step installs K3S:
 `curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644`
 
 And that’s it! You have a Kubernetes cluster running! You can check it with the command:
