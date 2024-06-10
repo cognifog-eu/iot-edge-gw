@@ -129,7 +129,7 @@ sudo apt upgrade
 2. Then, in file `/boot/cmdline.txt` add `cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1` to the end of the existing line (do not add it as a new line!!) and reboot the Raspberry Pi:
 ```
 sudo nano /boot/cmdline.txt
-(modify cmdline.txt file as mentioned before)
+(modify cmdline.txt file and save the changes as mentioned before)
 sudo reboot
 ```
 
@@ -141,7 +141,7 @@ And that’s it! You have a Kubernetes cluster running! You can check it with th
 
 (A comprehensive description of **B. K3S installation** step can be found at https://www.padok.fr/en/blog/raspberry-kubernetes. In addition, here is the official rancher documentation to install k3s: https://docs.k3s.io/quick-start)
 
-## C. IoT Edge Gateway toolkit
+## C. IoT Edge Gateway toolkit installation
 The IoT Edge Gateway can be populated with a toolkit of open-source applications, which are deployed via K3S either locally or remotely. The deployment files (YAML manifests) of the different applications are available in the `/manifests` folder of this repository:
 - **Home Assistant**: Open-source home automation platform that allows users to control and manage various smart devices and services (https://www.home-assistant.io/)
   - `home-assistant-deploy.yaml`: Home Assistant deployment file (`2024.4.3` release, validated at 23/04/2024)
@@ -178,7 +178,7 @@ The creation of these folders can be automatized by executing the script `Create
 
 (Note that the installation of **Home Assistant (2024.4.3)** and the **Matter controller add-on (5.9.0)** can be very slow due to the size of both images: 1.56 GB (plus 176 MB of the Bluetooth service) and 491 MB, respectively. For this reason, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface.)
 
-## D. Configuration
+## D. IoT Edge Gateway toolkit configuration
 ### D.1. Home Assistant
 After a successful installation, Home Assistant should be running at `http://[IP_ADDRESS]:8123`.  
 From this point on, **D.2.** and **D.3.** subsections describe how to manually configure both the Matter controller and the MQTT client for Home Assistant. Alternatively, we highly recommend to follow the guide to load a preconfiguration of Home Assistant, the Matter controller and the MQTT client at https://github.com/cognifog-eu/iot-edge-gw/tree/main/ha-config.
