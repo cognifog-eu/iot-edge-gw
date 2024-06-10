@@ -10,8 +10,8 @@ The IoT Edge Gateway has been validated in the following platform:
 
 (This manual has been created purposely for a Raspberry Pi with `cognifog` as hostname).
 
-### A.1. Optional: WiFi permanent connection
-- After connected to a WiFi network (normally, if the network is created by a laptop in the so called softAP process), the Raspberry Pi may disconnect after a certain period of time (normally, after less than one hour). One possible cause of this malfunctioning is the Power Management feature of its wireless interface. A potential solution to alleviate this problem is to disconnect the Power Management mode. To do it, it is necessary to type the following commands:
+### A.1. Optional: Raspberry Pi permanently connected to an external WiFi network
+After connected to a WiFi network (normally, if the network is created by a laptop in the so called softAP process), the Raspberry Pi may disconnect after a certain period of time (normally, after less than one hour). One possible cause of this malfunctioning is the Power Management feature of its wireless interface. A potential solution to alleviate this problem is to disconnect the Power Management mode. To do it, it is necessary to type the following commands:
 1. `sudo apt install wireless-tools`: To install the wireless tools
 2. `sudo iwconfig wlan0`: To check the status of wlan0 interface
 3. `sudo iwconfig wlan0 power off`: To disable Power Management feature in wlan0
@@ -53,7 +53,7 @@ From now on, every time the system starts/reboots, the script file will execute 
 
 (Further information on the **A.1. Optional: WiFi permanent connection** step can be found in **Method 1** section of the following link: https://itslinuxfoss.com/run-script-startup-ubuntu/)
 
-### A.2. Optional: Configuring a Raspberry Pi as a WiFi Access Point at 2.4 GHz
+### A.2. Optional: Raspberry Pi acting as a WiFi Access Point at 2.4 GHz
 **This setup requires a Raspberry Pi using Debian GNU/Linux 12 (bookworm) and Network Manager as system network service.**
 
 **This setup also requires that the Raspberry Pi's WiFi interface is not used for Internet access. Instead, the Raspberry Pi should be connected to the Internet via its Ethernet interface.**
