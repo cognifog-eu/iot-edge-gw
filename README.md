@@ -146,10 +146,8 @@ The IoT Edge Gateway can be populated with a toolkit of open-source applications
 
 | Purpose                                      | Toolkit application(s)                                     |
 |----------------------------------------------|------------------------------------------------------------|
-| Communication with MATTER-based end devices  | - Home Assistant                                          |
-|                                              | - MATTER controller add-on for Home Assistant              |
-| Communication with MQTT-based end devices   | - Mosquitto MQTT broker                                   |
-|                                              | (alternatively, Home Assistant can also work with a Mosquitto MQTT broker add-on)      |
+| Communication with MATTER-based end devices  | - Home Assistant  - MATTER controller add-on for Home Assistant                                        |
+| Communication with MQTT-based end devices    | - Mosquitto MQTT broker (alternatively, Home Assistant can also work with a Mosquitto MQTT broker add-on)                                   |
 | Container management                         | - Portainer                                               |
 | Network performance testing                  | - iPerf3                                                  |
 
