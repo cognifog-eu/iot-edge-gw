@@ -142,7 +142,19 @@ And that’s it! You have a Kubernetes cluster running! You can check it with th
 (A comprehensive description of **B. K3S installation** step can be found at https://www.padok.fr/en/blog/raspberry-kubernetes. In addition, here is the official rancher documentation to install k3s: https://docs.k3s.io/quick-start)
 
 ## C. IoT Edge Gateway toolkit installation
-The IoT Edge Gateway can be populated with a toolkit of open-source applications, which are deployed via K3S either locally or remotely. The deployment files (YAML manifests) of the different applications are available in the `/manifests` folder of this repository:
+The IoT Edge Gateway can be populated with a toolkit of open-source applications, which can be deployed via K3S either locally or remotely. 
+
+| Purpose                                  | Toolkit application(s)                                      |
+|------------------------------------------|-------------------------------------------------------------|
+| Communication with MATTER-based end devices | - Home Assistant                                              |
+|                                          | - MATTER controller add-on for Home Assistant                 |
+| Communication with MQTT-based end devices | - Mosquitto MQTT broker                                      |
+|                                          | - (alternatively, Home Assistant can also work with a Mosquitto MQTT broker add-on) |
+| Container management                     | - Portainer                                                  |
+| Network performance testing              | - iPerf3                                                     |
+
+
+The deployment files (.yaml manifests) of the different applications are available in the `/manifests` folder of this repository:
 - **Home Assistant**: Open-source home automation platform that allows users to control and manage various smart devices and services (https://www.home-assistant.io/)
   - `home-assistant-deploy.yaml`: Home Assistant deployment file (`2024.4.3` release, validated at 23/04/2024)
   - `home-assistant-service.yaml`: Home Assistant service file
@@ -180,11 +192,12 @@ The creation of these folders can be automatized by executing the script `Create
 
 ## D. IoT Edge Gateway toolkit configuration
 ### D.1. Home Assistant
-After a successful installation, Home Assistant should be running at `http://[IP_ADDRESS]:8123`.  
-From this point on, **D.2.** and **D.3.** subsections describe how to manually configure both the Matter controller and the MQTT client for Home Assistant. Alternatively, we highly recommend to follow the guide to load a preconfiguration of Home Assistant, the Matter controller and the MQTT client at https://github.com/cognifog-eu/iot-edge-gw/tree/main/ha-config.
+After a successful installation, Home Assistant should be running at `http://[IP_ADDRESS]:8123`. After accessing that URL with a browser, it is highly recommended to follow the onboarding process according to the official Home Assistant website (https://www.home-assistant.io/getting-started/onboarding/). Alternatively, we highly recommend to follow the guide to load a preconfiguration of Home Assistant, the Matter controller and the MQTT client at https://github.com/cognifog-eu/iot-edge-gw/tree/main/ha-config.
+
+From this point on, **D.2.** and **D.3.** subsections describe how to manually configure both the Matter controller and the MQTT client for Home Assistant. 
 
 ### D.2. Matter controller add-on for Home Assistant
-It may be needed to configure the Matter Server add-on inside Home Assistant. To do it, follow these steps:
+It may be necessary to configure the Matter Server add-on within Home Assistant. To do this, follow these steps:
 1. Go to Settings -> Devices & services
 2. Click Add Integration
 3. Type 'Matter' into the field 'Search for a brand name'
