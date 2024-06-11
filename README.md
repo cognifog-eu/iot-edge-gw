@@ -144,14 +144,15 @@ And that’s it! You have a Kubernetes cluster running! You can check it with th
 ## C. IoT Edge Gateway toolkit installation
 The IoT Edge Gateway can be populated with a toolkit of open-source applications, which can be deployed via K3S either locally or remotely. 
 
-| Purpose                                  | Toolkit application(s)                                      |
-|------------------------------------------|-------------------------------------------------------------|
-| Communication with MATTER-based end devices | - Home Assistant                                              |
-|                                          | - MATTER controller add-on for Home Assistant                 |
-| Communication with MQTT-based end devices | - Mosquitto MQTT broker                                      |
-|                                          | - (alternatively, Home Assistant can also work with a Mosquitto MQTT broker add-on) |
-| Container management                     | - Portainer                                                  |
-| Network performance testing              | - iPerf3                                                     |
+| Purpose                                      | Toolkit application(s)                                     |
+|----------------------------------------------|------------------------------------------------------------|
+| Communication with MATTER-based end devices | - Home Assistant                                          |
+|                                              | - MATTER controller add-on for Home Assistant              |
+| Communication with MQTT-based end devices   | - Mosquitto MQTT broker                                   |
+|                                              | (alternatively, Home Assistant can also work with a       |
+|                                              | Mosquitto MQTT broker add-on)                              |
+| Container management                         | - Portainer                                               |
+| Network performance testing                  | - iPerf3                                                  |
 
 
 The deployment files (.yaml manifests) of the different applications are available in the `/manifests` folder of this repository:
