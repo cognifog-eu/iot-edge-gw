@@ -199,7 +199,7 @@ After a successful installation, Home Assistant should be running at `http://[IP
 From this point on, **D.2.** and **D.3.** subsections describe how to manually configure both the Matter controller and the MQTT client for Home Assistant. 
 
 ### D.2. Matter controller add-on for Home Assistant
-It may be necessary to configure the Matter Server add-on within Home Assistant. To do this, follow these steps:
+It may be necessary to configure the Matter controller add-on from the GUI of Home Assistant. To do this, follow these steps:
 1. Go to Settings -> Devices & services
 2. Click Add Integration
 3. Type 'Matter' into the field 'Search for a brand name'
