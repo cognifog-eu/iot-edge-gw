@@ -179,6 +179,10 @@ For a remote deployment of applications, see **E. Integration with OCM**.
 Check that services are properly deployed by running:
 `kubectl get pods -A`
 
+The next figure illustrates the internal architecture of the IoT Edge GW with all the applications deployed from the toolkit. The connections between elements are color-coded: red indicates the deployment and management of applications via K3s, green signifies data transmission to and from MATTER-based end devices, and blue represents data transmission to and from MQTT-based end devices.
+
+![alt text](img/IoT_edge_GW_architecture.png)
+
 ### C.1. Considerations on the installation of Home Assistant and the Matter controller add-on
 By default, the deployment files of the **Home Assistant** (i.e., `home-assistant-deploy.yaml`) and the **Matter controller add-on** (i.e., `matter-server-deploy.yaml`) require the existence of some folders in the Raspberry Pi to store the corresponding configuration files:
   - Home Assistant: `/home/cognifog/iot-edge-gw/ha-config`
