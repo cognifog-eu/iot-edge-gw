@@ -27,14 +27,10 @@ spec:
         securityContext:
           privileged: true
       - name: home-assistant
+        image: ghcr.io/home-assistant/home-assistant:2024.9.1
+        # image: ghcr.io/home-assistant/home-assistant:2024.4.3
         # image: ghcr.io/home-assistant/home-assistant:stable
-        image: ghcr.io/home-assistant/home-assistant:2024.4.3
         # imagePullPolicy: Always
-        resources:
-          requests:
-            memory: "256Mi"
-          limits:
-            memory: "512Mi"
         ports:
         - containerPort: 8123
         volumeMounts:

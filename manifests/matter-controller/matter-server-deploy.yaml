@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
       - name: matter-server
+        image: ghcr.io/home-assistant-libs/python-matter-server:6.5.0
         #image: ghcr.io/home-assistant-libs/python-matter-server:stable
-        image: ghcr.io/home-assistant-libs/python-matter-server:5.9.0
         #imagePullPolicy: Always
         securityContext:
           # Esto es equivalente a apparmor=unconfined en Docker Compose
