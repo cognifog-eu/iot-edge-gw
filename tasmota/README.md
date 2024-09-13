@@ -1,7 +1,9 @@
 # Configuration of MATTER-based devices via Tasmota
 End devices can be configured to interact with the IoT Edge Gateway by means of the MATTER protocol. More specifically, this communication has been validated by using ESP32-S2 DevKitM-1 devices (https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) and the firmware provided by Tasmota (https://tasmota.github.io/docs/).
 
-A Tasmota pre-configured file with the configuration of Tasmota 13.3.0 for an ESP32-S2 DevKitM-1 device is provided in this folder. To flash an ESP32-S2 device with this firmware, connect the ESP32-S2 to a laptop via USB and visit its web installer: https://tasmota.github.io/install/. Then, follow these steps:
+Tasmota firmware can be loaded to ESP32-based devices by means of its web installer: https://tasmota.github.io/install/. It is only necessary to previously connect the ESP32-based device to a laptop via USB.
+
+Alternatively, a Tasmota pre-configured file with the configuration of Tasmota 13.3.0 for an ESP32-S2 DevKitM-1 device has been validated and is provided in this folder. To flash an ESP32-S2 device with this firmware, connect the ESP32-S2 to a laptop via USB and visit its web installer: https://tasmota.github.io/install/. Then, follow these steps:
 1. Click 'Upload factory.bin' and select the file `tasmota32s2_13.3.0.factory.bin`. Alternatively, all release binaries for Tasmota firmware 13.3.0 on ESP32 can be found at https://ota.tasmota.com/tasmota32/release-13.3.0/ 
 2. Press 'CONNECT' and select the COM port to which the device is connected. Setup will execute automatically
 3. Once the installation is finished, configure the WiFi network appropiately
@@ -17,6 +19,7 @@ A Tasmota pre-configured file with the configuration of Tasmota 13.3.0 for an ES
 8. If successful, the 'Home Assistant mobile app' should display a message similar to 'Commissioning complete'
 
 Apart from the Web UI interface of Tasmota, there are also alternative ways to communicate with these devices: via MQTT, via web requests, and over serial bridge (see https://tasmota.github.io/docs/Commands/ for more information). As a matter of example, an easy way to retrieve the basic information of the device flashed with the Tasmota firmware via a web request is the following:
+
 `curl "http://<IP_address_of_the_Tasmota_device>/cm?cmnd=Status%200"`
 
 ## A. Config_tasmota_064876_2166_13.3.0.dmp
