@@ -192,7 +192,7 @@ The creation of these folders can be automatized by executing the script `Create
 
 **Note:** The installation of **Home Assistant (2024.9.1)** and the **Matter controller add-on (6.5.0)** can be notably slow due to the size of both images: 593 MB (plus 69.7 MB of the Bluetooth service) and 167 MB, respectively. To mitigate this, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface for faster download speeds.
 
-**Important:** The inclusion of memory limits in the manifest files of these containers may result in deployment failures. By default, any memory settings are removed:
+**Important:** The inclusion of memory limits in the manifest files of these containers may result in deployment failures. By default, any memory settings are disabled:
 ```
 #resources:
   #requests:
