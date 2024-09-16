@@ -190,7 +190,16 @@ By default, the deployment files of the **Home Assistant** (i.e., `home-assistan
 
 The creation of these folders can be automatized by executing the script `CreateFolders.sh`, included in the `/scripts` folder of this repository. Just copy the `CreateFolders.sh` file into the Raspberry Pi and execute `bash CreateFolders.sh`. Alternatively, the user can create different folders as long as they match the definition of the previous deployment files.
 
-(Note that the installation of **Home Assistant (2024.9.1)** and the **Matter controller add-on (6.5.0)** can be very slow due to the size of both images: 593 MB (plus 69.7 MB of the Bluetooth service) and 167 MB, respectively. For this reason, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface.)
+**Note:** The installation of **Home Assistant (2024.9.1)** and the **Matter controller add-on (6.5.0)** can be notably slow due to the size of both images: 593 MB (plus 69.7 MB of the Bluetooth service) and 167 MB, respectively. To mitigate this, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface for faster download speeds.
+
+**Important:** The inclusion of memory limits in the manifest files of these containers may result in deployment failures. The default memory settings are as follows:
+```
+resources:
+  requests:
+    memory: "256Mi"
+  limits:
+    memory: "512Mi"
+```
 
 ## D. IoT Edge Gateway toolkit configuration
 ### D.1. Home Assistant
