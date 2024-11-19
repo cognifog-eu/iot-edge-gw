@@ -154,10 +154,10 @@ The IoT Edge Gateway can be populated with a toolkit of open-source applications
 
 The deployment files (.yaml manifests) of the different applications are available in the `/manifests` folder of this repository:
 - **Home Assistant**: Open-source home automation platform that allows users to control and manage various smart devices and services (https://www.home-assistant.io/)
-  - `home-assistant-deploy.yaml`: Home Assistant deployment file (`2024.9.1` release, validated at 10/09/2024)
+  - `home-assistant-deploy.yaml`: Home Assistant deployment file (`2024.11.2` release, validated at 19/11/2024)
   - `home-assistant-service.yaml`: Home Assistant service file
 - **MATTER controller add-on for Home Assistant**: Plug-in for Home Assistant to control MATTER-based end devices running over WiFi (https://www.home-assistant.io/integrations/matter/)
-  - `matter-server-deploy.yaml`: Matter Server deployment file (`6.5.0` release, validated at 10/09/2024)
+  - `matter-server-deploy.yaml`: Matter Server deployment file (`6.6.0` release, validated at 19/11/2024)
   - `matter-server-service.yaml`: Matter Server service file
 - **Mosquitto MQTT broker**: Open-source message broker that implements the MQTT protocol (https://mosquitto.org/). 
   - It can be installed in the Raspberry Pi by following the steps from https://github.com/cognifog-eu/mqtt-broker.
@@ -190,7 +190,7 @@ By default, the deployment files of the **Home Assistant** (i.e., `home-assistan
 
 The creation of these folders can be automatized by executing the script `CreateFolders.sh`, included in the `/scripts` folder of this repository. Just copy the `CreateFolders.sh` file into the Raspberry Pi and execute `bash CreateFolders.sh`. Alternatively, the user can create different folders as long as they match the definition of the previous deployment files.
 
-**Note:** The installation of **Home Assistant (2024.9.1)** and the **Matter controller add-on (6.5.0)** can be notably slow due to the size of both images: 593 MB (plus 69.7 MB of the Bluetooth service) and 167 MB, respectively. To mitigate this, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface for faster download speeds.
+**Note:** The installation of **Home Assistant (2024.11.2)** and the **Matter controller add-on (6.6.0)** can be notably slow due to the size of both images: 542 MB (plus 69.7 MB of the Bluetooth service) and 166 MB, respectively. To mitigate this, it is advisable to connect the Raspberry Pi to the Internet by means of its Ethernet interface for faster download speeds.
 
 **Important:** The inclusion of memory limits in the manifest files of these containers may result in deployment failures. Consequently, by default, any memory settings are disabled in the corresponding manifest files:
 ```

@@ -95,3 +95,9 @@ If experiencing issues accessing the **Home Assistant** interface on port 8123, 
 echo "" > /etc/iptables/iptables.rules
 echo "" > /etc/iptables/ip6tables.rules
 ```
+
+# D. Fix to properly update Home Assistant in ARCA OS
+When deploying an updated version of Home Assistant, the pod can be stuck in **ImagePullBackOff** status. In this case, the following solution may help:
+1. Run `crictl images` to list all locally cached images
+2. Identify the old Home Assistant image and remove it using `crictl rmi <image_name>`
+3. Redeploy the updated version of Home Assistant: `kubectl apply -f .`
