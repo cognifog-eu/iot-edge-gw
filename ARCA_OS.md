@@ -97,7 +97,7 @@ echo "" > /etc/iptables/ip6tables.rules
 ```
 
 ## D. Fix to properly update Home Assistant in ARCA OS
-When deploying an updated version of Home Assistant, the pod can be stuck in **ImagePullBackOff** status. In this case, the following solution may help:
+When updating the version of Home Assistant, the pod might get stuck in the **ImagePullBackOff** status. In this case, the following steps may help to resolve the issue:
 1. Run `crictl images` to list all locally cached images
 2. Identify the old Home Assistant image and remove it using `crictl rmi <image_name>`
 3. Redeploy the updated version of Home Assistant: `kubectl apply -f .`
