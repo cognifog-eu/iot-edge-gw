@@ -41,7 +41,7 @@ Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 23/04/2024 w
 |     2      | Temperature     | AM2301#Temperature   |
 |     3      | Humidity        | AM2301#Humidity      |
 
-## B. Config_tasmota_064876_2166_14.3.0
+## B. Config_tasmota_064876_2166_14.3.0.dmp
 Minimal configuration of an ESP32-S2 for Tasmota 14.3.0, created at 03/12/2024 with the following features:
 - Device Name (*Model* field in Home Assistant menu): `Tasmota` (please change the name to `Tasmota<X>` as previously mentioned)
 - Friendly Name (*Device* field in Home Assistant menu): `Tasmota` (please change the name to `Tasmota<X>` as previously mentioned)
