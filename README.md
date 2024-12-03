@@ -3,7 +3,7 @@ This manual includes all the steps and source code corresponding to the installa
 
 ## A. Prerequisites
 The IoT Edge Gateway has been validated in the following platform:
-- **HW**: Raspberry Pi 4B (4GB RAM and 32GB SD card)
+- **HW**: Raspberry Pi 4B (64-bit architecture *arm64*, 4GB RAM, and 32GB SD card)
 - **OS**: Debian GNU/Linux 11 (bullseye) and Debian GNU/Linux 12 (bookworm). These Linux-based OS distributions can be found in the Raspberry Pi Imager (https://www.raspberrypi.com/software/) under the name `Raspberry Pi OS Lite (64-bit)`. 
 - **OS (2)**: Alternatively, if using the embedded version of **ARCA Trusted OS** (https://www.cysec.com/arca/), we refer the reader to https://github.com/cognifog-eu/iot-edge-gw/blob/main/ARCA_OS.md.
 - **SW**: Lightweight Kubernetes K3S (https://k3s.io/)
@@ -126,7 +126,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-2. Then, in file `/boot/cmdline.txt` add `cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1` to the end of the existing line (do not add it as a new line!!) and reboot the Raspberry Pi:
+2. Then, in file `/boot/cmdline.txt`, add `cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1` to the end of the existing line (do not add it as a new line!!) and reboot the Raspberry Pi:
 ```
 sudo nano /boot/cmdline.txt
 (modify cmdline.txt file and save the changes as mentioned before)
@@ -139,7 +139,7 @@ sudo reboot
 And that’s it! You have a Kubernetes cluster running! You can check it with the command:
 `kubectl get pods -A`
 
-(A comprehensive description of **B. K3S installation** step can be found at https://www.padok.fr/en/blog/raspberry-kubernetes. In addition, here is the official rancher documentation to install k3s: https://docs.k3s.io/quick-start)
+(A comprehensive description of **B. K3S installation** step can be found at https://www.padok.fr/en/blog/raspberry-kubernetes. In addition, here is the official documentation to install k3s: https://docs.k3s.io/quick-start)
 
 ## C. IoT Edge Gateway toolkit installation
 The IoT Edge Gateway can be populated with a toolkit of open-source applications, which can be deployed via K3S either locally or remotely. 
@@ -160,26 +160,26 @@ The deployment files (.yaml manifests) of the different applications are availab
   - `matter-server-deploy.yaml`: Matter Server deployment file (`6.6.0` release, validated at 19/11/2024)
   - `matter-server-service.yaml`: Matter Server service file
 - **Mosquitto MQTT broker**: Open-source message broker that implements the MQTT protocol (https://mosquitto.org/). 
-  - It can be installed in the Raspberry Pi by following the steps from https://github.com/cognifog-eu/mqtt-broker.
+  - It can be installed in the Raspberry Pi by following the steps described in https://github.com/cognifog-eu/mqtt-broker.
 - **Portainer**: Open-source management and user interface for Docker/Kubernetes (https://www.portainer.io/)
   - `portainer-deploy-full.yaml`: Portainer deployment file (all included)
 - **iPerf3**: iPerf3 is an open-source tool for active measurements of the maximum achievable bandwidth on IP networks. It supports tuning of various parameters related to timing, buffers and protocols (TCP, UDP, SCTP with IPv4 and IPv6). For each test it reports the bandwidth, loss, and other parameters (https://iperf.fr/).  
-  To utilize iPerf3, it must be installed on two machines: one serving as a server and the other as a client. In the COGNIFOG project, we recommend deploying an Edge Server to function as the iPerf3 server and a Raspberry Pi to serve as the iPerf3 client. However, once iPerf3 is installed on any machine, it can be configured either as a server or as a client, offering flexibility in its deployment and use.  
-  - **iPerf3 server**: To be installed in an Edge server with an x86-64 architecture:
+  To utilize iPerf3, it must be installed on two different machines: one serving as a server and the other as a client. In the COGNIFOG project, we recommend deploying an Edge Server to function as the iPerf3 server and a Raspberry Pi to serve as the iPerf3 client. However, once iPerf3 is installed on any machine, it can be configured either as a server or as a client, offering flexibility in its deployment and use.  
+  - **iPerf3 server**: To be installed in an Edge server with an *x86-64* architecture:
     - `iperf3-server-deploy.yaml`: iPerf3 server deployment file
     - `iperf3-server-service.yaml`: iPerf3 server service file
-  - **iPerf3 client**: To be installed in a Raspberry Pi with an ARM64 architecture:
+  - **iPerf3 client**: To be installed in a Raspberry Pi with an *arm64* architecture:
     - `iperf3-client-deploy.yaml`: iPerf3 client deployment file
     - `iperf3-client-service.yaml`: iPerf3 client service file
 
-To install an application locally, copy all its files from the corresponding `/manifests` folder of this repository into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
+To install any of the aforementioned applications locally, copy all its files from the corresponding `/manifests` folder of this repository into a folder of the Raspberry Pi and run the following K3S command: `kubectl apply -f .` Alternatively, each application file can be deployed by using the following K3S command: `kubectl apply -f [file].yaml`
 
-For a remote deployment of applications, see **E. Integration with OCM**.
+Alternatively, for a remote deployment of applications, see **E. Integration with OCM**.
 
 Check that services are properly deployed by running:
 `kubectl get pods -A`
 
-The next figure illustrates the internal architecture of the IoT Edge GW with all the applications deployed from the toolkit. The connections between elements are color-coded: red indicates the deployment and management of applications via K3s, green signifies data transmission to and from MATTER-based end devices, and blue represents data transmission to and from MQTT-based end devices.
+The next figure illustrates the internal architecture of the IoT Edge GW with all the applications deployed from the toolkit. The connections between elements are color-coded: red indicates the deployment and management of applications via K3s, green means data transmission to and from MATTER-based end devices, and blue represents data transmission to and from MQTT-based end devices.
 
 ![alt text](img/IoT_edge_GW_architecture.png)
 
