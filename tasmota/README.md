@@ -5,7 +5,9 @@ End devices can be configured to interact with the IoT Edge Gateway by means of 
 Tasmota firmware can be loaded to ESP32-based devices in two different ways:
 
 ### A.1. Web installer
-Tasmota provides an easy-to-use web installer: https://tasmota.github.io/install/. It is only necessary to previously connect the ESP32-based device to a laptop via USB.
+Tasmota provides an easy-to-use web installer: https://tasmota.github.io/install/. It is only necessary to previously connect the ESP32-based device to a laptop via USB. Then, follow these steps:
+1. Click 'CONNECT' and select the COM port to which the device is connected
+2. Press 'INSTALL TASMOTA (ENGLISH)' (the device's memory will be erased to install the new firmware)
 
 ### A.2. Binary file
 Alternatively, Tasmota pre-configured files with the configuration of Tasmota 13.3.0 and 14.3.0 for an ESP32-S2 DevKitM-1 device have been validated and are provided in this folder. To flash an ESP32-S2 device with this firmware, connect the ESP32-S2 to a laptop via USB and visit its web installer: https://tasmota.github.io/install/. Then, follow these steps:
