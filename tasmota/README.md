@@ -45,7 +45,7 @@ Minimal configuration of an ESP32-S2 for Tasmota 13.3.0, created at 23/04/2024 w
 Minimal configuration of an ESP32-S2 for Tasmota 14.3.0, created at 03/12/2024 with the following features:
 - Device Name (*Model* field in Home Assistant menu): `Tasmota` (please change the name to `Tasmota<X>` as previously mentioned)
 - Friendly Name (*Device* field in Home Assistant menu): `Tasmota` (please change the name to `Tasmota<X>` as previously mentioned)
-- Inexplicably, when Device and Friendly Names are changed in Tasmota 14.3.0, previously loaded configuration of Matter endpoints is lost. So it is necessary to configure them again
+- **Inexplicably, when Device and Friendly Names are changed in Tasmota 14.3.0, previously loaded configuration of Matter endpoints is lost. So it is necessary to configure them again**
 - Wifi connectivity based on 1 preconfigured network:
   - SSID_1: `cognifog_wifi`
   - Password: `<protected>`
