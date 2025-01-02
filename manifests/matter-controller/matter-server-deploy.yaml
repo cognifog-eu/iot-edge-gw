@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: matter-server
-        image: ghcr.io/home-assistant-libs/python-matter-server:6.6.0
+        image: ghcr.io/home-assistant-libs/python-matter-server:7.0.1
         # image: ghcr.io/home-assistant-libs/python-matter-server:stable
         # imagePullPolicy: Always
         securityContext:
