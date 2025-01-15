@@ -1,6 +1,6 @@
 # Managing STAs associated to the hotspot
 
-The following section provides a set of commands for the IoT Edge GW to manage the associated STAs when it is acting as a WiFi Hotspot. There are common and specific commands for **nmcli** (Debian) and **iwctl** (ARCA OS).
+The following section provides a set of commands for the IoT Edge GW to manage the associated STAs when it is acting as a WiFi Hotspot. There are common and specific commands for **nmcli** (Debian) and **iwctl** (ARCA OS). In several of these commands, `wlan0` refers to the name of the WiFi interface used by the IoT Edge GW in hotspot mode.
 
 (For more advanced tools to list the connected devices on a WiFi Access Point, check https://www.baeldung.com/linux/list-devices-wireless-access-point)
 
@@ -8,7 +8,7 @@ The following section provides a set of commands for the IoT Edge GW to manage t
 
 Regardless of using **nmcli** in Debian or **iwctl** in ARCA OS, there are a bunch of useful commands to get more info on the network and connected devices:
 - `iw dev`: Lists all Wi-Fi interfaces and their details, like the interface name, type (managed, AP, etc.), and current SSID if connected.
-- `iw dev wlan0 station dump`: Shows connected devices to the Wi-Fi interface, including MAC addresses, signal strength, and data rate.
+- `iw dev wlan0 station dump`: Shows connected devices to the WiFi interface, including MAC addresses, signal strength, and data rate.
 - `sudo arp | sort | grep wlan0`: Displays and sorts the ARP table, showing the IP addresses, MAC addresses, and network interfaces of devices associated with the `wlan0` interface.
 - `ip neigh show` and `ip neigh show | grep wlan0`: Displays the Neighbor Table listing the IP addresses, MAC addresses, and status of devices.
 
