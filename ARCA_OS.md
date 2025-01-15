@@ -58,7 +58,7 @@ ip -6 route add fe80::/64 dev wlan0 metric 1
 
 (Further information can be found in https://iwd.wiki.kernel.org/ap_mode)
 
-(Further information on **Managing the associated STAs to the hotspot** can be found on https://github.com/cognifog-eu/iot-edge-gw/blob/main/managing_STAs.md)
+(Further information on **Managing the STAs associated to the hotspot** can be found on https://github.com/cognifog-eu/iot-edge-gw/blob/main/managing_STAs.md)
 
 ## B. Solving issues with Home Assistant (temporary method)
 **This solution does not survive a reboot and needs to be applied every time the Raspberry Pi is restarted.**

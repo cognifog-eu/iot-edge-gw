@@ -1,4 +1,4 @@
-# Managing STAs associated to the hotspot
+# Managing the STAs associated to the hotspot
 
 The following section provides a set of commands for the IoT Edge GW to manage the associated STAs when it is acting as a WiFi Hotspot. There are common and specific commands for **nmcli** (Debian) and **iwctl** (ARCA OS). In several of these commands, `wlan0` refers to the name of the WiFi interface used by the IoT Edge GW in hotspot mode.
 

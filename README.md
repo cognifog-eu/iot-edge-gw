@@ -111,7 +111,7 @@ journalctl | grep wifi
 
 (Further information on the **A.2. Optional: Configuring a Raspberry Pi as a WiFi Access Point** step can be found in the following links: https://raspberrytips.com/access-point-setup-raspberry-pi/ and https://www.baeldung.com/linux/nmcli-wap-sharing-internet)
 
-(Further information on **Managing the associated STAs to the hotspot** can be found on https://github.com/cognifog-eu/iot-edge-gw/blob/main/managing_STAs.md)
+(Further information on **Managing the STAs associated to the hotspot** can be found on https://github.com/cognifog-eu/iot-edge-gw/blob/main/managing_STAs.md)
 
 ## B. K3S installation
 The following commands need to be executed to install K3S in the Raspberry Pi and create a cluster with a single node (i.e., the Raspberry Pi itself):
