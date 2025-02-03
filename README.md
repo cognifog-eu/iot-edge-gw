@@ -248,5 +248,9 @@ An external OCM Manager node can be used as an Orchestrator of the deployed IoT 
 3. Then, the command for a managed cluster to join the hub is: `clusteradm join --hub-token <token> --hub-apiserver <api server url> --wait --cluster-name <cluster name> --ca-file=<server certificate .crt file>` (or a similar one provided by the hub administrator)
 4. In case the hub administrator requires a server certificate file (.crt), it must be included in the same folder where the previous command is executed (i.e., that from step #3). Further information on how to register a cluster can be found here: https://open-cluster-management.io/getting-started/installation/register-a-cluster/
 
-## F. MATTER-based end devices
+## F. Integration with the monitoring manager
+The IoT edge GW can be integrated with an external monitoring manager through the installation of a monitoring agent. This installation must be conducted manually by following the steps of the corresponding COGNIFOG's repository: [Monitoring agent repository](https://github.com/cognifog-eu/monitoring-agent/)
+* Please check the `develop` branch in case the `main` one is empty.
+
+## G. MATTER-based end devices
 A first validation of the **Home Assistant** and the **Matter controller add-on** services into the IoT Edge Gateway has been performed in combination with a set of MATTER-based ESP32-S2 devices. The firmware employed in those devices has been Tasmota (https://tasmota.github.io/docs/). More information on this setting can be found in https://github.com/cognifog-eu/iot-edge-gw/tree/main/tasmota.
