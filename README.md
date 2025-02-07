@@ -249,7 +249,7 @@ An external OCM Manager node can be used as an Orchestrator of the deployed IoT 
 4. In case the hub administrator requires a server certificate file (.crt), it must be included in the same folder where the previous command is executed (i.e., that from step #3). Further information on how to register a cluster can be found here: https://open-cluster-management.io/getting-started/installation/register-a-cluster/
 
 ## F. Integration with the monitoring manager
-The IoT edge GW can be integrated with an external monitoring manager through the installation of a monitoring agent. Even if the IoT edge GW has been already integrated with an external OCM manager, this installation must be conducted MANUALLY by following the steps of the corresponding COGNIFOG's [repository](https://github.com/cognifog-eu/monitoring-agent/) 
+The IoT edge GW can be integrated with an external monitoring manager through the installation of a monitoring agent. Even if the IoT edge GW has been already integrated with an external OCM manager, this installation must be conducted MANUALLY by following the steps of the corresponding COGNIFOG's [monitoring agent repository](https://github.com/cognifog-eu/monitoring-agent/) 
 
 (Please check the `develop` branch in the aforementioned repository in case the `main` one is empty.)
 
